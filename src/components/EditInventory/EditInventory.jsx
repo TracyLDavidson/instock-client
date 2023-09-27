@@ -12,7 +12,6 @@ export default function EditInventory() {
                   <label>Description</label>
                   <input></input>
                   <label>Category</label>
-  
               </form>
         </div>
       </>
