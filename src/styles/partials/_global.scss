@@ -1,0 +1,73 @@
+@import "scss-reset/reset";
+@import "reset-css/sass/reset";
+@import "./typography";
+@import "./mixins";
+
+body {
+  @include body-med;
+  color: $primary-color--dark;
+}
+
+th,
+.btn--cta {
+  background-color: $secondary-color--light;
+}
+
+th,
+input::placeholder {
+  color: $secondary-color--dark;
+}
+
+tr {
+  border-bottom: 1px solid $secondary-color--dark;
+}
+
+label {
+  @include LabelsLinksAndButtons;
+}
+
+label.in-stock {
+  background-color: $highlight-color--1;
+}
+
+label.out-of-stock {
+  background-color: $highlight-color--2;
+}
+
+a,
+a:visited,
+a:active {
+  width: 100%;
+  text-decoration: none;
+}
+
+h1 {
+  @include page-header;
+}
+h2 {
+  @include subheader;
+}
+h3 {
+  @include LabelsLinksAndButtons;
+}
+h4 {
+  @include table-header;
+}
+
+p.large {
+  @include body-lrg;
+}
+p.med {
+  @include body-med;
+}
+p.sm {
+  @include body-sm;
+}
+
+.background--dark {
+  background-color: $background-color--dark;
+}
+
+.background--light {
+  background-color: $background-color--light;
+}
