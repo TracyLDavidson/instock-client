@@ -2,89 +2,89 @@
 @import "./breakpoints";
 
 @mixin page-header {
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 2.1538rem;
+  line-height: 2.7692rem;
   font-family: "semi-bold";
 
   @include tablet {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 2.2857rem;
+    line-height: 2.8571rem;
   }
 }
 
 @mixin subheader {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 1.5385rem;
+  line-height: 2.1538rem;
   font-family: "semi-bold";
 
   @include tablet {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.8571rem;
+    line-height: 2.5rem;
   }
 }
 
 @mixin LabelsLinksAndButtons {
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 1rem;
+  line-height: 1.5385rem;
   font-family: "regular";
   @include tablet {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.5714rem;
   }
 }
 
 @mixin table-header {
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 0.8462rem;
+  line-height: 1.2308rem;
   font-family: "regular";
   color: $secondary-color--dark;
 
   @include tablet {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 0.8571rem;
+    line-height: 1.2857rem;
   }
 }
 
 @mixin body-lrg {
-  font-size: 15px;
-  line-height: 26px;
+  font-size: 1.1538rem;
+  line-height: 2rem;
   font-family: "regular";
   @include tablet {
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 1.1429rem;
+    line-height: 2rem;
   }
 }
 
 @mixin body-med {
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 1rem;
+  line-height: 1.5385rem;
   font-family: "regular";
   @include tablet {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.5714rem;
   }
 }
 
 @mixin body-sm {
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 0.8462rem;
+  line-height: 1.2308rem;
   font-family: "regular";
   @include tablet {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 0.8571rem;
+    line-height: 1.2857rem;
   }
 }
 
 @mixin page-gutter {
-  margin: 0 16px;
-  padding: 0 16px;
+  margin: 0 1.2308rem;
+  padding: 0 1.2308rem;
   @include tablet {
-    margin: 0 32px;
-    padding: 0 24px;
+    margin: 0 2.2857rem;
+    padding: 0 1.7143rem;
   }
   @include desktop {
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 1.7143rem;
   }
 }
 
