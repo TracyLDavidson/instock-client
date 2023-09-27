@@ -1,0 +1,96 @@
+@import "./variables.scss";
+@import "./breakpoints";
+
+@mixin page-header {
+  font-size: 28px;
+  line-height: 36px;
+  font-family: "semi-bold";
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@mixin subheader {
+  font-size: 20px;
+  line-height: 28px;
+  font-family: "semi-bold";
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@mixin LabelsLinksAndButtons {
+  font-size: 13px;
+  line-height: 20px;
+  font-family: "regular";
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@mixin table-header {
+  font-size: 11px;
+  line-height: 16px;
+  font-family: "regular";
+  color: $secondary-color--dark;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@mixin body-lrg {
+  font-size: 15px;
+  line-height: 26px;
+  font-family: "regular";
+  @include tablet {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+@mixin body-med {
+  font-size: 13px;
+  line-height: 20px;
+  font-family: "regular";
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@mixin body-sm {
+  font-size: 11px;
+  line-height: 16px;
+  font-family: "regular";
+  @include tablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@mixin page-gutter {
+  margin: 0 16px;
+  padding: 0 16px;
+  @include tablet {
+    margin: 0 32px;
+    padding: 0 24px;
+  }
+  @include desktop {
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+}
+
+@mixin container {
+  @include desktop {
+    margin: 0 auto;
+    max-width: 1020px;
+  }
+}
