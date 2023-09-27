@@ -4,35 +4,35 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
-import Footer from "./components/Footer/Footer"; //still need to create this? -EO
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Navigate to={<WarehousesPage />} />} />
+      <Route path="/" element={<WarehousesPage />} />
+        {/* <Route path="/" element={<Navigate to={<WarehousesPage />} />} /> */}
         <Route path="/warehouse" element={<WarehousesPage />} />
-        <Route
-          path="/warehouse/edit/:id"
+        {/* <Route
+          path="/warehouse/:id/edit"
           element={<WarehousesPage warehouse={warehouse} />}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/warehouse/:id"
           element={<WarehousesPage warehouse={warehouse} />}
-        />
+        /> */}
         {/* should we leave the following in? discuss with group */}
-        <Route path="warehouse/add" element={<WarehousesPage />} />
+        {/* <Route path="warehouse/add" element={<WarehousesPage />} /> */}
         <Route path="/inventory" element={<InventoryPage />} />
-        <Route path="/inventory/:id" element={<InventoryPage item={item} />} />
-        <Route
-          path="inventory/edit/:id"
+        {/* <Route path="/inventory/:id" element={<InventoryPage item={item} />} /> */}
+        {/* <Route
+          path="inventory/:id/edit"
           element={<InventoryPage item={item} />}
-        />
+        /> */}
         {/* should we leave the following in? discuss with group */}
-        <Route path="inventory/add" element={<InventoryPage item={item} />} />
+        {/* <Route path="inventory/add" element={<InventoryPage item={item} />} /> */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
