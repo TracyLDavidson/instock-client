@@ -121,7 +121,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
     <div className="WarehouseDetails">
       <h1 className="WarehouseDetails__header">{title}</h1>
       <form className="WarehouseDetails__form" onSubmit={handleSubmit}>
-        <div className="WarehouseDetails__details">
+        <div className="WarehouseDetails__container">
           <h2 className="WarehouseDetails__sub-header">Warehouse Details</h2>
           <Textbox
             label="Warehouse Name"
@@ -156,7 +156,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
             classname="textbox__country"
           />
         </div>
-        <div className="WarehouseDetails-contact-details">
+        <div className="WarehouseDetails__container">
           <h2 className="WarehouseDetails__sub-header">Contact Details</h2>
           <Textbox
             label="Contact Name"
@@ -191,16 +191,18 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
             classname="textbox__email"
           />
         </div>
-        <button
-          className="WarehouseDetails__cancel"
-          type="button"
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-        <button className="WarehouseDetails__action" type="submit">
-          {buttonTitle}
-        </button>
+        <div className="WarehouseDetails__buttons-container">
+          <button
+            className="WarehouseDetails__cancel-btn"
+            type="button"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button className="WarehouseDetails__action-btn" type="submit">
+            {buttonTitle}
+          </button>
+        </div>
       </form>
     </div>
   );

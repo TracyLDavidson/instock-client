@@ -1,0 +1,19 @@
+// font source: https://fonts.google.com/specimen/Titillium+Web (bold, semi-bold, regular)
+
+@font-face {
+  font-family: "regular";
+  src: url("./../../assets/fonts/regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "bold";
+  src: url("./../../assets/fonts/bold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "semi-bold";
+  src: url("./../../assets/fonts/semi-bold.ttf") format("truetype");
+  font-weight: 400;
+}
