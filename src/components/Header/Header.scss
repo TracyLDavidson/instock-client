@@ -1,0 +1,100 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins";
+@use "../../styles/partials/variables";
+@use "../../styles/partials/global";
+
+
+.header{
+    font-family: regular;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    @include tablet{
+        padding-left: 32px;
+        padding-right: 32px;
+
+    }
+
+    &__logocontainer{
+        display: flex;
+        justify-content: center;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+
+    }
+
+    &__allcontainer{
+        background-color:#232940;;
+        height: 13rem;
+        width: 100%;
+    
+    }
+
+    &__container{
+        @include tablet{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            gap: 15rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            align-items: center;
+        }
+    }
+
+    &__twobuttonscontainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        @include tablet{
+            gap:2rem
+        }
+    }
+
+    &__buttoncontainer{
+        
+        &-warehouses{
+            background-color: #232940;
+            height: 2rem;
+            width: 7.5rem;
+            border-radius: 0.9rem;
+            color: #ffffff;
+            border: none;
+            &:hover{
+                background-color:#13182c;
+                text-decoration: underline;
+            }
+
+            &:active{
+                background-color:#13182c;
+                font-weight: 500;
+            }
+
+        }
+        &-invebtory{
+            background-color: #232940;
+            height: 2rem;
+            width: 7.5rem;
+            border-radius: 0.9rem;
+            color: #ffffff;
+            border: none;
+            &:hover{
+                background-color:#13182c;
+                text-decoration: underline;
+            }
+            &:active{
+                background-color:#13182c;
+                font-weight: 500;
+            }
+
+        }
+
+    }
+
+    
+
+}
+
+
