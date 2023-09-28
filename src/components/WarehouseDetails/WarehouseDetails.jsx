@@ -2,6 +2,7 @@ import React from "react";
 import "./WarehouseDetails.scss";
 import Textbox from "../Textbox/Textbox.jsx";
 import { useState } from "react";
+import backArrow from "../../assets/icons/back-arrow.svg";
 
 /*
     Warehouse Details Component
@@ -119,77 +120,86 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   return (
     <div className="WarehouseDetails">
-      <h1 className="WarehouseDetails__header">{title}</h1>
+      <div className="WarehouseDetails__header-container">
+        <img
+          src={backArrow}
+          alt="back arrow"
+          className="WarehouseDetails__img"
+        />
+        <h1 className="WarehouseDetails__header">{title}</h1>
+      </div>
       <form className="WarehouseDetails__form" onSubmit={handleSubmit}>
         <div className="WarehouseDetails__container">
-          <h2 className="WarehouseDetails__sub-header">Warehouse Details</h2>
-          <Textbox
-            label="Warehouse Name"
-            name="Warehouse_Name"
-            placeholder="Warehouse Name"
-            onchange={handleWarehouseNameChange}
-            value={WarehouseName}
-            classname="textbox__warehouse-name"
-          />
-          <Textbox
-            label="Street Address"
-            name="Street_Address"
-            placeholder="Street Address"
-            onchange={handleStreetAddressChange}
-            value={StreetAddress}
-            classname="textbox__street-address"
-          />
-          <Textbox
-            label="City"
-            name="City"
-            placeholder="City"
-            onchange={handleCityChange}
-            value={City}
-            classname="textbox__city"
-          />
-          <Textbox
-            label="Country"
-            name="Country"
-            placeholder="Country"
-            onchange={handleCountryChange}
-            value={Country}
-            classname="textbox__country"
-          />
-        </div>
-        <div className="WarehouseDetails__container">
-          <h2 className="WarehouseDetails__sub-header">Contact Details</h2>
-          <Textbox
-            label="Contact Name"
-            name="Contact_Name"
-            placeholder="Contact Name"
-            onchange={handleContactNameChange}
-            value={ContactName}
-            classname="textbox__contact-name"
-          />
-          <Textbox
-            label="Position"
-            name="Position"
-            placeholder="Position"
-            onchange={handlePositionChange}
-            value={Position}
-            classname="textbox__position"
-          />
-          <Textbox
-            label="Phone Number"
-            name="Phone_Number"
-            placeholder="Phone Number"
-            onchange={handlePhoneNumberChange}
-            value={PhoneNumber}
-            classname="textbox__phone-number"
-          />
-          <Textbox
-            label="Email"
-            name="Email"
-            placeholder="Email"
-            onchange={handleEmailChange}
-            value={Email}
-            classname="textbox__email"
-          />
+          <div className="WarehouseDetails__sub-container">
+            <h2 className="WarehouseDetails__sub-header">Warehouse Details</h2>
+            <Textbox
+              label="Warehouse Name"
+              name="Warehouse_Name"
+              placeholder="Warehouse Name"
+              onchange={handleWarehouseNameChange}
+              value={WarehouseName}
+              classname="textbox__warehouse-name"
+            />
+            <Textbox
+              label="Street Address"
+              name="Street_Address"
+              placeholder="Street Address"
+              onchange={handleStreetAddressChange}
+              value={StreetAddress}
+              classname="textbox__street-address"
+            />
+            <Textbox
+              label="City"
+              name="City"
+              placeholder="City"
+              onchange={handleCityChange}
+              value={City}
+              classname="textbox__city"
+            />
+            <Textbox
+              label="Country"
+              name="Country"
+              placeholder="Country"
+              onchange={handleCountryChange}
+              value={Country}
+              classname="textbox__country"
+            />
+          </div>
+          <div className="WarehouseDetails__sub-container WarehouseDetails__sub-container--borderline">
+            <h2 className="WarehouseDetails__sub-header">Contact Details</h2>
+            <Textbox
+              label="Contact Name"
+              name="Contact_Name"
+              placeholder="Contact Name"
+              onchange={handleContactNameChange}
+              value={ContactName}
+              classname="textbox__contact-name"
+            />
+            <Textbox
+              label="Position"
+              name="Position"
+              placeholder="Position"
+              onchange={handlePositionChange}
+              value={Position}
+              classname="textbox__position"
+            />
+            <Textbox
+              label="Phone Number"
+              name="Phone_Number"
+              placeholder="Phone Number"
+              onchange={handlePhoneNumberChange}
+              value={PhoneNumber}
+              classname="textbox__phone-number"
+            />
+            <Textbox
+              label="Email"
+              name="Email"
+              placeholder="Email"
+              onchange={handleEmailChange}
+              value={Email}
+              classname="textbox__email"
+            />
+          </div>
         </div>
         <div className="WarehouseDetails__buttons-container">
           <button

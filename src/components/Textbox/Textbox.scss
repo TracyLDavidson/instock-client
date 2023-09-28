@@ -21,6 +21,7 @@
   @include tablet {
   }
   @include desktop {
+    max-width: 1020px;
   }
 
   &__label {

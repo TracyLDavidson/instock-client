@@ -13,9 +13,33 @@
 }
 
 .WarehouseDetails {
+  //   display: flex;
+  //   flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @include tablet {
   }
   @include desktop {
+  }
+
+  &__header-container {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid $secondary-color--light;
+    @include tablet {
+    }
+    @include desktop {
+      max-width: 1280px;
+    }
+  }
+
+  &__img {
+    padding-left: 16px;
+    @include tablet {
+    }
+    @include desktop {
+    }
   }
 
   &__header {
@@ -27,19 +51,45 @@
   }
 
   &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     @include tablet {
+      flex-direction: column;
+    }
+    @include desktop {
+      max-width: 1280px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      padding: 16px 0;
     }
     @include desktop {
     }
   }
 
-  &__container {
-    border-top: 1px solid $secondary-color--light;
-    border-bottom: 1px solid $secondary-color--light;
+  &__sub-container {
+    width: 100%;
     padding: 8px 16px;
     @include tablet {
+      padding: 0 16px;
     }
     @include desktop {
+    }
+
+    &--borderline {
+      border-top: 1px solid $secondary-color--light;
+      @include tablet {
+        border-top: 0;
+        border-left: 1px solid $secondary-color--light;
+      }
+      @include desktop {
+      }
     }
   }
 
@@ -57,6 +107,7 @@
     display: flex;
     padding: 16px;
     @include tablet {
+      justify-content: flex-end;
     }
     @include desktop {
     }
@@ -70,8 +121,10 @@
     width: 100%;
     height: 36px;
     margin-right: 16px;
+    padding: 0 16px;
     @include tablet {
       height: 38px;
+      width: auto;
     }
     @include desktop {
     }
@@ -84,8 +137,10 @@
     border-radius: 20px;
     width: 100%;
     height: 36px;
+    padding: 0 16px;
     @include tablet {
       height: 38px;
+      width: auto;
     }
     @include desktop {
     }
