@@ -38,6 +38,9 @@
   line-height: 1.2308rem;
   font-family: "regular";
   color: $secondary-color--dark;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 8px 0;
 
   @include tablet {
     font-size: 0.8571rem;
