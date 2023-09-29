@@ -1,6 +1,6 @@
-@use "../../styles/partials/breakpoints" as *;
-@use "../../styles/partials//variables" as *;
-// @use "../../styles/partials/mixins" as *;
+// @use "../../styles/partials/breakpoints" as *;
+// @use "../../styles/partials//variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 /* 
   Textbox CSS Properties 
@@ -58,9 +58,9 @@
     @include desktop {
     }
 
-    &--error {
-      border: 1px solid #d22d2d;
-      border-radius: 20px;
-    }
+    // &--error {
+    //   border: 1px solid #d22d2d;
+    //   border-radius: 20px;
+    // }
   }
 }

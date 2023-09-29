@@ -1,6 +1,6 @@
-@use "../../styles/partials/breakpoints" as *;
-@use "../../styles/partials//variables" as *;
-// @use "../../styles/partials/mixins" as *;
+// @use "../../styles/partials/breakpoints" as *;
+// @use "../../styles/partials//variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 /*
     Warehouse Details CSS Properties
@@ -145,4 +145,76 @@
     @include desktop {
     }
   }
+}
+
+.textbox .textbox__warehouse-name--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__warehouse-name--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__street-address--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__street-address--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__city--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__city--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__country--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__country--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__contact-name--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__contact-name--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__position--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__position--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__phone-number--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__phone-number--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__email--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__email--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
 }
