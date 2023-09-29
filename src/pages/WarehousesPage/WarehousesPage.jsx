@@ -1,5 +1,10 @@
 import react, { useState } from "react";
 import { Table } from "../../components/Table/Table";
+import { PageHeader } from "../../components/PageHeader/PageHeader";
+import { Paper } from "../../components/Paper/Paper";
+
+import "./WarehousesPage.scss";
+
 export default function Warehouse() {
   // sort by in progress
   const [sortBy, setSortBy] = useState("");
@@ -38,14 +43,25 @@ export default function Warehouse() {
   };
 
   return (
-    <>
-      <Table
-        headers={tableHeaders}
-        rows={tableRows}
-        actionsComponent={MockActionsComponent}
-        onTableSort={setSortBy}
-        sortBy={sortBy}
-      />
-    </>
+    <div className="warehouses_page">
+      <div className="warehouses_page__container">
+        <Paper>
+          <PageHeader
+            title="Warehouses"
+            pageActionsComponent={() => <button>Back</button>}
+          >
+            <input placeholder="search component" />
+            <button>CTA button</button>
+          </PageHeader>
+          <Table
+            headers={tableHeaders}
+            rows={tableRows}
+            actionsComponent={MockActionsComponent}
+            onTableSort={setSortBy}
+            sortBy={sortBy}
+          />
+        </Paper>
+      </div>
+    </div>
   );
 }
