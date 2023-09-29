@@ -1,5 +1,5 @@
-// @import "scss-reset/reset";
-// @import "reset-css/sass/reset";
+@import "scss-reset/reset";
+@import "reset-css/sass/reset";
 @import "./typography";
 @import "./mixins";
 
@@ -8,17 +8,17 @@ body {
   color: $primary-color--dark;
 }
 
-th,
+.table-header,
 .btn--cta {
-  background-color: $secondary-color--light;
+  background-color: $background-color--light;
 }
 
-th,
+.table-header,
 input::placeholder {
   color: $secondary-color--dark;
 }
 
-tr {
+.table-row {
   border-bottom: 1px solid $secondary-color--dark;
 }
 
