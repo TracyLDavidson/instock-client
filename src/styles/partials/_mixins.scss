@@ -1,6 +1,16 @@
 @import "./variables.scss";
 @import "./breakpoints";
 
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 @mixin page-header {
   font-size: 2.1538rem;
   line-height: 2.7692rem;
@@ -93,4 +103,9 @@
     margin: 0 auto;
     max-width: 1020px;
   }
+}
+
+@mixin input-style {
+  border-radius: 20px;
+  border: 1px solid black;
 }
