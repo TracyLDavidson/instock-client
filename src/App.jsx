@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-      <Route path="/" element={<WarehousesPage />} />
+        <Route path="/" element={<WarehousesPage />} />
         {/* <Route path="/" element={<Navigate to={<WarehousesPage />} />} /> */}
         <Route path="/warehouse" element={<WarehousesPage />} />
         {/* <Route
