@@ -49,6 +49,7 @@ export default function Warehouse() {
           <PageHeader
             title="Warehouses"
             pageActionsComponent={() => <button>Back</button>}
+            onNavigateBack={() => {}}
           >
             <input placeholder="search component" />
             <button>CTA button</button>
