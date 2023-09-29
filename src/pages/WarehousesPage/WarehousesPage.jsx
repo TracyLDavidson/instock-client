@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import { Table } from "../../components/Table/Table";
 export default function Warehouse() {
+  // sort by in progress
   const [sortBy, setSortBy] = useState("");
 
   const tableHeaders = [
@@ -15,6 +16,7 @@ export default function Warehouse() {
     { key: "actions", label: "actions", sortable: false },
   ];
 
+  // Table component can render both strings or components
   const tableRows = [
     {
       warehouse: "Manhattan",
