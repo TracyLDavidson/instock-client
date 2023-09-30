@@ -22,7 +22,7 @@ export default function Header() {
 
           <div className="header__buttoncontainer">
             <Link
-              to="inventory/add"
+              to="/inventory"
             //   type="button"
               className="header__buttoncontainer-invebtory"
             >
