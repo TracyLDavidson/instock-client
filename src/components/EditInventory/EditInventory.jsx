@@ -1,53 +1,67 @@
 import "./EditInventory.scss";
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
+
 
 export default function EditInventory() {
-
-  const [itemName, setItemName] = useState('');
-  const [itemDescription, setItemDescription] = useState('');
-  const [status, setStatus] = useState('');
-  const [quantity, setQuantity] = useState('');
-
+  const [itemName, setItemName] = useState("");
+  const [itemDescription, setItemDescription] = useState("");
+  const [status, setStatus] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [warehouses, setWarehouses] = useState([]);
+  const [selectedWarehouse, setSelectedWarehouse] = useState("");
+  const { id } = useParams();
+  const url = `http://localhost:8080`;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/categories')
-    .then((response) => {
-      setCategories(response.data);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+    console.log("id is:", id)
+    axios
+      .get(`${url}/categories`)
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  const handleCategoryChange = (e) => {
-    setSelectedItem(e.target.value)
-  }
+  useEffect(() => {
+    axios
+      .get(`${url}/warehouses`)
+      .then((response) => {
+        const data = response.data;
+        setWarehouses(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   // fetch data from database
   useEffect(() => {
-    axios.get('http://localhost:8080/inventory/1')
-    .then((response) => {
-      console.log(response.data[0]);
-      const data = response.data[0];
-
-      setItemName(data.item_name);
-      setItemDescription(data.description);
-      setSelectedCategory(data.category); // add category here
-      
-      if (data.status === 'In Stock') {
-        setStatus('inStock');
-      } else if (data.status === 'Out of Stock') { // CHECK SPELLING
-        setStatus('outOfStock');
-      }
-
-      setQuantity(data.quantity);
-      
-    }).catch((error) => {
-      console.error('Error from EditInventory:', error);
-    });
+    axios
+      .get(`${url}/inventory/${id}`)
+      .then((response) => {
+        console.log(response.data[0]);
+        const data = response.data[0];
+        setItemName(data.item_name);
+        setItemDescription(data.description);
+        setSelectedCategory(data.category);
+        setSelectedWarehouse(data.warehouse_id);
+        if (data.status === "In Stock") {
+          setStatus("In Stock");
+        } else if (data.status === "Out of Stock") {
+          setStatus("Out of Stock");
+        }
+        setQuantity(data.quantity);
+      })
+      .catch((error) => {
+        console.error("Error from EditInventory:", error);
+      });
   }, []);
 
   // Event Handlers
@@ -59,6 +73,10 @@ export default function EditInventory() {
     setItemDescription(e.target.value);
   };
 
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
   const handleStatusChange = (e) => {
     setStatus(e.target.value);
   };
@@ -67,13 +85,38 @@ export default function EditInventory() {
     setQuantity(e.target.value);
   };
 
+  const handleWarehouseChange = (e) => {
+    setSelectedWarehouse(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedInventory = {
+      item_name: itemName,
+      description: itemDescription,
+      status: status, 
+      quantity: parseInt(quantity, 10),
+      category: selectedCategory,
+      warehouse_id: selectedWarehouse,
+    };
+
+    axios
+    .post(`${url}/inventory/${id}/edit`, updatedInventory)
+    .then((response) => {
+      console.log("Item updated sucessfully:", response.data);
+    })
+    .catch((error) => {
+      console.error('error updating item:', error);
+    })
+  }
+
   return (
     <>
       <div className="title">
         <img className="title__img" />
         <h1 className="title__text">Edit Inventory Item</h1>
       </div>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <div className="details">
           <h2 className="details__title">Item Details</h2>
           <label className="label">Item Name</label>
@@ -100,7 +143,6 @@ export default function EditInventory() {
             name="categorySelect"
             value={selectedCategory}
             onChange={handleCategoryChange}
-            // placeholder="Please select"
             className="select-category"
           >
             <option value="">Please select</option>
@@ -115,22 +157,22 @@ export default function EditInventory() {
           <h2 className="availability__title">Item Availability</h2>
           <h3 className="label">Status</h3>
           <div className="availability__status">
-            <input 
-            id="inStock" 
-            name="status" 
-            type="radio" 
-            value="inStock"
-            checked={status === 'inStock'}
-            onChange={handleStatusChange}
+            <input
+              id="inStock"
+              name="status"
+              type="radio"
+              value="In Stock"
+              checked={status === "In Stock"}
+              onChange={handleStatusChange}
             ></input>
             <label htmlFor="inStock">In stock</label>
-            <input 
-            id="outOfStock" 
-            name="status" 
-            type="radio" 
-            value="outOfStock"
-            checked={status === 'outOfStock'}
-            onChange={handleStatusChange}
+            <input
+              id="outOfStock"
+              name="status"
+              type="radio"
+              value="Out of Stock"
+              checked={status === "Out of Stock"}
+              onChange={handleStatusChange}
             ></input>
             <label htmlFor="outOfStock">Out of stock</label>
           </div>
@@ -150,9 +192,24 @@ export default function EditInventory() {
           <select
             id="warehouseSelect"
             name="warehouseSelect"
-            placeholder="Please select"
+            value={selectedWarehouse}
+            onChange={handleWarehouseChange}
             className="select-warehouse"
-          ></select>
+          >
+            <option value="">Please select</option>
+            {warehouses.map((warehouse) => (
+              <option
+                key={warehouse.id}
+                value={warehouse.id}
+              >
+                {warehouse.warehouse_name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <button type="button">Cancel</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </>
