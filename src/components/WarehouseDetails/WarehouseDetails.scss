@@ -13,14 +13,17 @@
 }
 
 .WarehouseDetails {
-  //   display: flex;
-  //   flex-direction: column;
+  background-color: $background-color--white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: relative; // To be determined
+  bottom: 5rem; // To be determined
   @include tablet {
   }
   @include desktop {
+    max-width: 1280px;
   }
 
   &__header-container {
@@ -30,7 +33,7 @@
     @include tablet {
     }
     @include desktop {
-      max-width: 1280px;
+      // max-width: 1280px;
     }
   }
 
@@ -58,7 +61,7 @@
       flex-direction: column;
     }
     @include desktop {
-      max-width: 1280px;
+      // max-width: 1280px;
     }
   }
 

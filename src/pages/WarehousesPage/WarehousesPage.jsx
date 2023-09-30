@@ -2,7 +2,7 @@ import react, { useState } from "react";
 import { Table } from "../../components/Table/Table";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { Paper } from "../../components/Paper/Paper";
-
+import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import "./WarehousesPage.scss";
 
 export default function Warehouse() {
@@ -63,6 +63,7 @@ export default function Warehouse() {
           />
         </Paper>
       </div>
+      {/* <WarehouseDetails title={"Edit Warehouse"} buttonTitle={"Edit"} /> */}
     </div>
   );
 }
