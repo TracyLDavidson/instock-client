@@ -2,15 +2,25 @@ import React from "react";
 import "./WarehouseDetails.scss";
 import WareHouseDetailInvalid from "../WarehouseDetailInvalid/WarehouseDetailInvalid";
 import Textbox from "../Textbox/Textbox.jsx";
-import { useState } from "react";
 import backArrow from "../../assets/icons/back-arrow.svg";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+// import {
+//   fetchSingleWarehouse,
+//   postSingleWarehouse,
+//   putSingleWarehouse,
+// } from "../../utils/apiUtils.mjs";
 
 /*
     Warehouse Details Component
 */
 
 const WarehouseDetails = ({ title, buttonTitle }) => {
+  /* Variables */
+  const { warehouseID } = useParams(); // Grabs current ID from URL
+
   /* useStates Variables */
+  const [SelectedWarehouse, setSelectedWarehouse] = useState(null);
   const [WarehouseName, setWarehouseName] = useState("");
   const [StreetAddress, setStreetAddress] = useState("");
   const [City, setCity] = useState("");
@@ -27,6 +37,85 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
   const [PositionSubmit, setPositionSubmit] = useState(true);
   const [PhoneNumberSubmit, setPhoneNumberSubmit] = useState(true);
   const [EmailSubmit, setEmailSubmit] = useState(true);
+
+  /* Functions */
+  const fetchSingleWarehouseFunction = async () => {
+    // Function to fetch data based on ID in URL page
+    try {
+      const { data } = await fetchSingleWarehouse(warehouseID);
+      // console.log(data);
+      setSelectedWarehouse(data);
+    } catch (error) {
+      alert("ERROR 404\nVideo not found... Redirecting to Home Page");
+      Navigate("/");
+    }
+  };
+
+  const postSingleWarehouseFunction = async (
+    warehouseName,
+    streetAddress,
+    city,
+    country,
+    contactName,
+    position,
+    phoneNumber,
+    email
+  ) =>
+    // Function to post add warehouse onto server
+    {
+      try {
+        if (warehouseID !== undefined) {
+          const { data } = await postSingleWarehouse(
+            warehouseID,
+            warehouseName,
+            streetAddress,
+            city,
+            country,
+            contactName,
+            position,
+            phoneNumber,
+            email
+          );
+          // console.log(data);
+        }
+      } catch (err) {
+        alert("ERROR 404\nVideo not found... Redirecting to Home Page");
+        Navigate("/");
+      }
+    };
+
+  const putSingleWarehouseFunction = async (
+    warehouseName,
+    streetAddress,
+    city,
+    country,
+    contactName,
+    position,
+    phoneNumber,
+    email
+  ) =>
+    // Function to post add warehouse onto server
+    {
+      try {
+        if (warehouseID !== undefined) {
+          const { data } = await putSingleWarehouse(
+            warehouseID,
+            warehouseName,
+            streetAddress,
+            city,
+            country,
+            contactName,
+            position,
+            phoneNumber,
+            email
+          );
+          // console.log(data);
+        }
+      } catch (err) {
+        alert("ERROR 404\nVideo not found... Redirecting to Home Page");
+        Navigate("/");
+      }
+    };
 
   /* onChange handlers */
   const handleWarehouseNameChange = (e) => {
@@ -61,6 +150,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
     setEmailSubmit(true);
     setEmail(e.target.value);
   };
+
   /* Validations */
   const isWarehouseNameValid = () => {
     // Warehouse Name Validation
@@ -224,8 +314,30 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
       // console.log(e.target.elements.Position.value);
       // console.log(e.target.elements.Phone_Number.value);
       // console.log(e.target.elements.Email.value);
-      // Do an update and post request on backend side here
       alert("Form Submitted");
+
+      // Do an update and post request on backend side here
+      postSingleWarehouseFunction(
+        WarehouseName,
+        StreetAddress,
+        City,
+        Country,
+        ContactName,
+        Position,
+        PhoneNumber,
+        Email
+      );
+
+      putSingleWarehouseFunction(
+        WarehouseName,
+        StreetAddress,
+        City,
+        Country,
+        ContactName,
+        Position,
+        PhoneNumber,
+        Email
+      );
     }
   };
 
@@ -237,6 +349,17 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
     }
   };
 
+  /* Start of code */
+  // useEffect(() => {
+  //   // Invoke axios to retrieve data from specific ID
+  //   if (warehouseID !== undefined) {
+  //     fetchSingleWarehouseFunction();
+  //   }
+  // }, [warehouseID]);
+
+  // if (!SelectedWarehouse) {
+  //   return <p>Loading</p>;
+  // }
   return (
     <div className="WarehouseDetails">
       <div className="WarehouseDetails__header-container">
