@@ -7,7 +7,7 @@ export const TableRows = ({
   headers = [],
   sortBy = "",
   onRowClick = () => {},
-  actionsComponent = () => {},
+  actionsComponent = () => <></>,
 }) => {
   const [sortedRows, setSortedRows] = useState(rows);
   useEffect(() => {
@@ -55,7 +55,9 @@ export const TableRows = ({
                   </div>
                 );
               })}
-              <div className="table-row__table-cell">{actionsComponent()}</div>
+              <div className="table-row__table-cell">
+                {actionsComponent(sourceRows[rowIndex])}
+              </div>
             </div>
           );
         })}
