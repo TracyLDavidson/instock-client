@@ -97,7 +97,11 @@ export default function WarehouseInventoryPage() {
             headers={tableHeaders}
             rows={tableRows}
             sourceRows={sourceRows}
-            actionsComponent={() => <PageActions />}
+            actionsComponent={(row) => (
+              <PageActions
+                onEdit={() => navigate(`/inventory/${row.id}/edit`)}
+              />
+            )}
             onTableSort={setSortBy}
             sortBy={sortBy}
             onRowClick={(row) => navigate(`/inventory/${row.id}/view`)}
