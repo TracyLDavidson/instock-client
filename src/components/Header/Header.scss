@@ -1,18 +1,22 @@
-@use "../../styles/partials/breakpoints" as *;
+// @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/typography" as *;
-@use "../../styles/partials/mixins";
-@use "../../styles/partials/variables";
-@use "../../styles/partials/global";
+@use "../../styles/partials/mixins" as *;
+// @use "../../styles/partials/mixins";
+// @use "../../styles/partials/variables";
+// @use "../../styles/partials/global";
 
 .header {
   font-family: regular;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+
   @include tablet {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 3.2rem 0 0 0;
+    padding-left: 3.2rem;
+
+ 
   }
 
   &__logocontainer {
@@ -20,12 +24,21 @@
     justify-content: center;
     padding-top: 1rem;
     padding-bottom: 2rem;
+
+    @include tablet {
+      justify-content: flex-start;
+      
+    }
   }
 
   &__allcontainer {
     background-color: #232940;
-    height: 13rem;
+    height: 20rem;
+    padding: 3.2rem 0 0 0;
     width: 100%;
+
+  
+
   }
 
   &__container {
@@ -33,54 +46,83 @@
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      gap: 15rem;
+      // gap: 15rem;
       padding-left: 2rem;
       padding-right: 2rem;
       align-items: center;
+
+      @include desktop {
+        width: 1280px;
+        margin: 0 auto;
+      }
     }
   }
 
   &__twobuttonscontainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    @include flex-row;
+
     @include tablet {
       gap: 2rem;
     }
   }
 
   &__buttoncontainer {
-    &-warehouses {
+    @include flex-row;
+    justify-content: center;
+    width: calc(100% - 3.2rem);
+    gap: 1.6rem;
+
+    &--warehouses {
       background-color: #232940;
-      height: 2rem;
-      width: 7.5rem;
-      border-radius: 0.9rem;
+      border-radius: 2rem;
       color: #ffffff;
       border: none;
+
+      margin: 0 0 0 1.6rem;
+      text-decoration: none;
+      text-align: center;
+      justify-content: center;
+      padding: 0.8rem 0rem;
+
+      @include tablet {
+        padding: 0.8rem 1.6rem;
+      }
+
       &:hover {
         background-color: #13182c;
-        text-decoration: underline;
+        // text-decoration: underline;
       }
 
       &:active {
         background-color: #13182c;
         font-weight: 500;
+        text-decoration: none;
       }
     }
-    &-invebtory {
+    &--inventory {
       background-color: #232940;
-      height: 2rem;
-      width: 7.5rem;
-      border-radius: 0.9rem;
+      border-radius: 2rem;
       color: #ffffff;
       border: none;
+
+      text-decoration: none;
+      text-align: center;
+      justify-content: center;
+      padding: 0.8rem 0rem;
+
+      @include tablet {
+        padding: 0.8rem 1.6rem;
+      }
+
       &:hover {
         background-color: #13182c;
-        text-decoration: underline;
+        // text-decoration: underline;
       }
       &:active {
         background-color: #13182c;
         font-weight: 500;
+        padding: 0.8rem  0;
+
       }
     }
   }
