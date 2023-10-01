@@ -44,7 +44,7 @@ export default function Warehouse() {
 
   return (
     <div className="warehouses_page">
-      {/* <div className="warehouses_page__container">
+      <div className="warehouses_page__container">
         <Paper>
           <PageHeader
             title="Warehouses"
@@ -62,8 +62,7 @@ export default function Warehouse() {
             sortBy={sortBy}
           />
         </Paper>
-      </div> */}
-      <WarehouseDetails title={"Edit Warehouse"} buttonTitle={"Edit"} />
+      </div>
     </div>
   );
 }
