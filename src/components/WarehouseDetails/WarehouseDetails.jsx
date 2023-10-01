@@ -3,7 +3,7 @@ import "./WarehouseDetails.scss";
 import WareHouseDetailInvalid from "../WarehouseDetailInvalid/WarehouseDetailInvalid";
 import Textbox from "../Textbox/Textbox.jsx";
 import backArrow from "../../assets/icons/back-arrow.svg";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 /*
@@ -247,11 +247,13 @@ const WarehouseDetails = ({ title, buttonTitle, actionFunction }) => {
   return (
     <div className="WarehouseDetails">
       <div className="WarehouseDetails__header-container">
-        <img
-          src={backArrow}
-          alt="back arrow"
-          className="WarehouseDetails__img"
-        />
+        <Link to={`/warehouses`} className="WarehouseDetails__link">
+          <img
+            src={backArrow}
+            alt="back arrow"
+            className="WarehouseDetails__img"
+          />
+        </Link>
         <h1 className="WarehouseDetails__header">{title}</h1>
       </div>
       <form className="WarehouseDetails__form" onSubmit={handleSubmit}>
