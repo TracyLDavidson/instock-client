@@ -2,6 +2,7 @@ import "./EditInventory.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import backArrow from "../../assets/icons/back-arrow.svg";
 
 
 
@@ -111,9 +112,14 @@ export default function EditInventory() {
   }
 
   return (
-    <>
+    <div className="edit-container">
       <div className="title">
         <img className="title__img" />
+        <img
+          src={backArrow}
+          alt="back arrow"
+          className="title__img"
+        />
         <h1 className="title__text">Edit Inventory Item</h1>
       </div>
       <form className="form" onSubmit={handleSubmit}>
@@ -212,6 +218,6 @@ export default function EditInventory() {
           <button type="submit">Submit</button>
         </div>
       </form>
-    </>
+    </div>
   );
 }

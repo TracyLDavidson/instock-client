@@ -1,9 +1,17 @@
 @use '../../styles/partials/mixins' as *;
 // @use '../../styles/partials/variables' as *;
 
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.edit-container {
+    padding: 0 16px;
+}
 
 .title {
-    @include flex-col;
+    @include flex-row;
     border-bottom: 1px solid $secondary-color--light;
 
     &__img {

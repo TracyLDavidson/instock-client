@@ -3,6 +3,10 @@
 @import "./typography";
 @import "./mixins";
 
+:root {
+  font-size: 10px;
+}
+
 body {
   @include body-med;
   color: $primary-color--dark;
