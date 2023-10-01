@@ -65,6 +65,10 @@ export default function WarehouseInventoryPage() {
   const [tableRows, setTableRows] = useState([]);
   const [sourceRows, setSourceRows] = useState([]);
 
+  // const handleRowId = (id) => {
+  //   navigate(`/inventory/${id}/edit`);
+  // }
+
   useEffect(() => {
     const effects = async () => {
       try {
@@ -97,10 +101,10 @@ export default function WarehouseInventoryPage() {
             headers={tableHeaders}
             rows={tableRows}
             sourceRows={sourceRows}
-            actionsComponent={() => <PageActions />}
+            actionsComponent={(row) => <PageActions />}
             onTableSort={setSortBy}
             sortBy={sortBy}
-            onRowClick={(row) => navigate(`/inventory/${row.id}/view`)}
+            onRowClick={(row) => navigate(`/inventory/${row.id}/edit`)}
           />
         </Paper>
       </div>
