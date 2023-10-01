@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header/Header";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
+import WarehouseInventoryPage from "./pages/WarehouseInventoryPage/WarehouseInventoryPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import EditInventory from "./components/EditInventory/EditInventory";
 import WarehouseEditAddPage from "./pages/WarehousesEditAddPage/WarehousesEditAddPage";
@@ -37,6 +38,18 @@ function App() {
         <Route path="/" element={<Navigate to={`/warehouses`} />} />
         <Route path="/warehouses" element={<WarehousesPage />} />
         <Route
+          path="/warehouses/:warehouseId"
+          element={<WarehouseInventoryPage />}
+        />
+        {/* <Route
+          path="/warehouse/:id/edit"
+          element={<WarehousesPage warehouse={warehouse} />}
+        /> */}
+        {/* <Route
+          path="/warehouse/:id"
+          element={<WarehousesPage warehouse={warehouse} />}
+        /> */}
+        <Route
           path="/warehouses/:warehouseID/edit"
           element={<WarehouseEditAddPage />}
         />
@@ -49,6 +62,10 @@ function App() {
         />
         {/* <Route path="/inventory/:id" element={<InventoryPage item={item} />} /> */}
         <Route path="inventory/:id/edit" element={<EditInventory />} />
+        <Route
+          path="inventory/:id/view"
+          element={() => <p>Inventory View Item</p>}
+        />
         {/* should we leave the following in? discuss with group */}
         {/* <Route path="inventory/add" element={<InventoryPage item={item} />} /> */}
         {/* <Route path="inventory/add" element={<EditInventory />} /> */}

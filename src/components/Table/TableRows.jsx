@@ -3,6 +3,7 @@ import { TableTitleCell } from "./TableTitleCell";
 
 export const TableRows = ({
   rows = [],
+  sourceRows = [],
   headers = [],
   sortBy = "",
   onRowClick = () => {},
@@ -37,16 +38,21 @@ export const TableRows = ({
                 const headerLabel = headers.find(
                   (header) => header.key === key
                 ).label;
+                const cellClassName = headers[index].className(row[key]);
+
                 return (
                   <div
                     key={`table-cell-${index}`}
-                    className="table-row__table-cell"
+                    className={`table-row__table-cell`}
+                    onClick={() => onRowClick(sourceRows[index])}
                   >
                     <h4>{headerLabel}</h4>
                     {index === 0 && <TableTitleCell title={row[key]} />}
                     {index !== 0 && typeof row[key] === "function"
                       ? row[key]()
-                      : index !== 0 && row[key]}
+                      : index !== 0 && (
+                          <p className={cellClassName}>{row[key]}</p>
+                        )}
                   </div>
                 );
               })}

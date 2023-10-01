@@ -16,6 +16,11 @@
 
     @include tablet {
       margin: unset;
+      justify-content: start;
     }
+  }
+  @include tablet {
+    margin: unset;
+    justify-content: start;
   }
 }

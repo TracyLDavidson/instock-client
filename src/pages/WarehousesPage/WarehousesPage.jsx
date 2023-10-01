@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchAllWarehouses } from "../../utils/api";
 import { Table } from "../../components/Table/Table";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
@@ -46,17 +47,25 @@ const generateTableHeaderLabels = (rows) => {
       key: header,
       label: labels[index],
       sortable: sortable[index],
+      className: () => {},
     };
   });
 
-  tableHeaders.push({ key: "actions", label: "actions", sortable: false });
+  tableHeaders.push({
+    key: "actions",
+    label: "actions",
+    sortable: false,
+    className: () => {},
+  });
   return tableHeaders;
 };
 
-export default function Warehouse() {
+export default function WarehousesPage() {
+  const navigate = useNavigate();
   const [sortBy, setSortBy] = useState("");
   const [tableHeaders, setTableHeaders] = useState([]);
   const [tableRows, setTableRows] = useState([]);
+  const [sourceRows, setSourceRows] = useState([]);
 
   useEffect(() => {
     const effects = async () => {
@@ -64,6 +73,7 @@ export default function Warehouse() {
       if (response.data && response.data.length) {
         const rows = formatWarehousesResponse(response.data);
         const headers = generateTableHeaderLabels(rows);
+        setSourceRows(response.data);
         setTableHeaders(headers);
         setTableRows(rows);
       }
@@ -77,14 +87,18 @@ export default function Warehouse() {
         <Paper>
           <PageHeader title="Warehouses">
             <Search />
-            <PrimaryButton>+ Add New Warehouse</PrimaryButton>
+            <PrimaryButton onClick={() => navigate("/warehouses/add")}>
+              + Add New Warehouse
+            </PrimaryButton>
           </PageHeader>
           <Table
             headers={tableHeaders}
+            sourceRows={sourceRows}
             rows={tableRows}
             actionsComponent={() => <PageActions />}
             onTableSort={setSortBy}
             sortBy={sortBy}
+            onRowClick={(row) => navigate(`/warehouses/${row.id}`)}
           />
         </Paper>
       </div>

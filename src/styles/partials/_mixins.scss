@@ -132,3 +132,11 @@
     width: max-content;
   }
 }
+
+@mixin chip {
+  padding: 4px 8px;
+  border-radius: 25px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+}

@@ -1,0 +1,24 @@
+@import "/src/styles/partials/mixins";
+@import "/src/styles/partials/variables";
+
+.warehouse_inventory_page {
+  padding: 0 16px;
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: center;
+  }
+  .paper {
+    margin-top: -85px;
+  }
+  .table {
+    background-color: $background-color--white;
+  }
+
+  // TITAN-10: Warehouse Details Component - TO BE REMOVED WHEN COMPONENT ADDED
+  &__details-component {
+    padding: 16px 0;
+    background-color: $secondary-color--light;
+    text-align: center;
+  }
+}
