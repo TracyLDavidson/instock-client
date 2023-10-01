@@ -6,6 +6,7 @@ import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { Paper } from "../../components/Paper/Paper";
 import { PageActions } from "../../components/PageActions/PageActions";
 import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
+import { Search } from "../../components/Search/Search";
 import editIconWhite from "../../assets/icons/edit-white.svg";
 
 import "./InventoryPage.scss";
@@ -85,6 +86,7 @@ export default function WarehouseInventoryPage() {
       <div className="inventory_page__container">
         <Paper>
           <PageHeader title={"Inventory"} onNavigateBack={() => navigate("/")}>
+            <Search />
             <PrimaryButton>
               <img src={editIconWhite} alt="An edit icon" />
               Edit
