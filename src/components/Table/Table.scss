@@ -4,9 +4,11 @@
 
 .table-container {
   display: table;
-
   flex-direction: column;
   width: 100%;
+  @include tablet {
+    // min-width: 768px;
+  }
 }
 
 .table-header {
@@ -21,6 +23,7 @@
       display: table-cell;
       text-transform: uppercase;
       padding: 8px;
+      width: 50px;
       div:first-child {
         white-space: nowrap;
         display: inline-flex;
@@ -58,6 +61,22 @@
   }
   &__table-cell:last-child {
     flex-basis: 100%;
+  }
+
+  &__table-cell:first-child {
+    order: 1;
+  }
+  &__table-cell:nth-child(2) {
+    order: 3;
+  }
+  &__table-cell:nth-child(3) {
+    order: 2;
+  }
+  &__table-cell:nth-child(4) {
+    order: 4;
+  }
+  &__table-cell:nth-child(5) {
+    order: 5;
   }
   @include tablet {
     h4 {
@@ -99,6 +118,7 @@
     color: $primary-color--tertiary;
   }
   @include tablet {
-    justify-content: space-between;
+    justify-content: start;
+    gap: 8px;
   }
 }
