@@ -9,6 +9,7 @@ import WarehouseInventoryPage from "./pages/WarehouseInventoryPage/WarehouseInve
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import EditInventory from "./components/EditInventory/EditInventory";
 import WarehouseEditAddPage from "./pages/WarehousesEditAddPage/WarehousesEditAddPage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           element={() => <p>Inventory View Item</p>}
         />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }

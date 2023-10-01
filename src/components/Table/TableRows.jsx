@@ -7,7 +7,7 @@ export const TableRows = ({
   headers = [],
   sortBy = "",
   onRowClick = () => {},
-  actionsComponent = () => {},
+  actionsComponent = () => <></>,
 }) => {
   const [sortedRows, setSortedRows] = useState(rows);
   useEffect(() => {
@@ -28,10 +28,10 @@ export const TableRows = ({
   return (
     <>
       {!!sortedRows.length &&
-        sortedRows.map((row, index) => {
+        sortedRows.map((row, rowIndex) => {
           return (
             <div
-              key={`${parseInt(Math.random() * 1000)}-${index}`}
+              key={`${parseInt(Math.random() * 1000)}-${rowIndex}`}
               className="table-row"
             >
               {Object.keys(row).map((key, index) => {
@@ -39,12 +39,11 @@ export const TableRows = ({
                   (header) => header.key === key
                 ).label;
                 const cellClassName = headers[index].className(row[key]);
-
                 return (
                   <div
                     key={`table-cell-${index}`}
                     className={`table-row__table-cell`}
-                    onClick={() => onRowClick(sourceRows[index])}
+                    onClick={() => onRowClick(sourceRows[rowIndex])}
                   >
                     <h4>{headerLabel}</h4>
                     {index === 0 && <TableTitleCell title={row[key]} />}
@@ -56,7 +55,9 @@ export const TableRows = ({
                   </div>
                 );
               })}
-              <div className="table-row__table-cell">{actionsComponent()}</div>
+              <div className="table-row__table-cell">
+                {actionsComponent(sourceRows[rowIndex])}
+              </div>
             </div>
           );
         })}

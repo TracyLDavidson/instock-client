@@ -95,10 +95,18 @@ export default function WarehousesPage() {
             headers={tableHeaders}
             sourceRows={sourceRows}
             rows={tableRows}
-            actionsComponent={() => <PageActions />}
+            actionsComponent={(row) => {
+              return (
+                <PageActions
+                  onEdit={() => navigate(`/warehouses/${row.id}/edit`)}
+                />
+              );
+            }}
             onTableSort={setSortBy}
             sortBy={sortBy}
-            onRowClick={(row) => navigate(`/warehouses/${row.id}`)}
+            onRowClick={(row) => {
+              navigate(`/warehouses/${row.id}`);
+            }}
           />
         </Paper>
       </div>

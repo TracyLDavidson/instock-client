@@ -1,0 +1,12 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem;
+  @include desktop {
+    padding: 4rem;
+  }
+}
