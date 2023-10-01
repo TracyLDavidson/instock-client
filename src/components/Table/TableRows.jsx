@@ -38,7 +38,7 @@ export const TableRows = ({
                 const headerLabel = headers.find(
                   (header) => header.key === key
                 ).label;
-                const cellCallName = headers[index].className(row[key]);
+                const cellClassName = headers[index].className(row[key]);
 
                 return (
                   <div
@@ -51,7 +51,7 @@ export const TableRows = ({
                     {index !== 0 && typeof row[key] === "function"
                       ? row[key]()
                       : index !== 0 && (
-                          <p className={cellCallName}>{row[key]}</p>
+                          <p className={cellClassName}>{row[key]}</p>
                         )}
                   </div>
                 );
