@@ -88,7 +88,7 @@
 .table-title-cell {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   padding: 0 8px;
   cursor: pointer;
   color: $primary-color--tertiary;
@@ -97,5 +97,8 @@
   a:visited,
   a:active {
     color: $primary-color--tertiary;
+  }
+  @include tablet {
+    justify-content: space-between;
   }
 }
