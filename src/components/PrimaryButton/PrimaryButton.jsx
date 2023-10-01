@@ -3,7 +3,7 @@ import "./PrimaryButton.scss";
 
 export const PrimaryButton = ({ children, onClick }) => {
   return (
-    <div className="btn btn--primary">
+    <div className="btn btn--primary" onClick={onClick}>
       {children}
     </div>
   );

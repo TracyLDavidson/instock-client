@@ -86,7 +86,9 @@ export default function WarehousesPage() {
         <Paper>
           <PageHeader title="Warehouses">
             <Search />
-            <PrimaryButton>+ Add New Warehouse</PrimaryButton>
+            <PrimaryButton onClick={() => navigate("/warehouses/add")}>
+              + Add New Warehouse
+            </PrimaryButton>
           </PageHeader>
           <Table
             headers={tableHeaders}
