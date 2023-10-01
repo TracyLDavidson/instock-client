@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 34px 0 8px 0;
+    padding: 16px;
   }
   &__container_header {
     width: 100%;
@@ -36,6 +36,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    @include tablet {
+      flex-wrap: nowrap;
+    }
   }
 
   &__actions {
@@ -68,6 +71,13 @@
       padding: 0;
       flex-direction: row;
       align-items: baseline;
+    }
+  }
+
+  .btn--primary {
+    margin: 16px 0 4px 0;
+    @include tablet {
+      margin: 0 8px;
     }
   }
 }

@@ -1,8 +1,8 @@
 // import { useState } from "react";
 import "./App.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "./components/Header/Header";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
@@ -23,9 +23,10 @@ function App() {
         console.log("error:", error);
       });
   }, []);
-  if (!inventoryList.length) {
-    return <>Loading...</>;
-  }
+  // Commented out because it breaks my code
+  // if (!inventoryList.length) {
+  //   return <>Loading...</>;
+  // }
 
   return (
     <BrowserRouter>
@@ -47,13 +48,10 @@ function App() {
         {/* <Route path="/inventory" element={<InventoryPage />} /> */}
         <Route
           path="/inventory"
-          element={<Navigate to={`/inventory/${inventoryList[0].id}/edit`} />}
+          element={<Navigate to={`/inventory/${inventoryList[0]?.id}/edit`} />}
         />
         {/* <Route path="/inventory/:id" element={<InventoryPage item={item} />} /> */}
-        <Route
-          path="inventory/:id/edit"
-          element={<EditInventory />}
-        />
+        <Route path="inventory/:id/edit" element={<EditInventory />} />
         {/* should we leave the following in? discuss with group */}
         {/* <Route path="inventory/add" element={<InventoryPage item={item} />} /> */}
         {/* <Route path="inventory/add" element={<EditInventory />} /> */}
