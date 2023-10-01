@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import EditInventory from "./components/EditInventory/EditInventory";
+import WarehouseEditAddPage from "./pages/WarehousesEditAddPage/WarehousesEditAddPage";
 
 function App() {
   const [inventoryList, setInventoryList] = useState([]); //temporary solution in order useParams with edit
@@ -35,16 +36,12 @@ function App() {
         {/* <Route path="/" element={<WarehousesPage />} /> */}
         <Route path="/" element={<Navigate to={`/warehouses`} />} />
         <Route path="/warehouses" element={<WarehousesPage />} />
-        {/* <Route
-          path="/warehouse/:id/edit"
-          element={<WarehousesPage warehouse={warehouse} />}
-        /> */}
-        {/* <Route
-          path="/warehouse/:id"
-          element={<WarehousesPage warehouse={warehouse} />}
-        /> */}
+        <Route
+          path="/warehouses/:warehouseID/edit"
+          element={<WarehouseEditAddPage />}
+        />
+        <Route path="/warehouses/add" element={<WarehouseEditAddPage />} />
         {/* should we leave the following in? discuss with group */}
-        {/* <Route path="warehouse/add" element={<WarehousesPage />} /> */}
         {/* <Route path="/inventory" element={<InventoryPage />} /> */}
         <Route
           path="/inventory"

@@ -2,14 +2,18 @@ import React from "react";
 import "./WarehouseDetails.scss";
 import WareHouseDetailInvalid from "../WarehouseDetailInvalid/WarehouseDetailInvalid";
 import Textbox from "../Textbox/Textbox.jsx";
-import { useState } from "react";
 import backArrow from "../../assets/icons/back-arrow.svg";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 /*
     Warehouse Details Component
 */
 
-const WarehouseDetails = ({ title, buttonTitle }) => {
+const WarehouseDetails = ({ title, buttonTitle, actionFunction }) => {
+  /* Variables */
+  const { warehouseID } = useParams(); // Grabs current ID from URL
+
   /* useStates Variables */
   const [WarehouseName, setWarehouseName] = useState("");
   const [StreetAddress, setStreetAddress] = useState("");
@@ -61,10 +65,11 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
     setEmailSubmit(true);
     setEmail(e.target.value);
   };
+
   /* Validations */
   const isWarehouseNameValid = () => {
     // Warehouse Name Validation
-    if (WarehouseName.length < 10) {
+    if (WarehouseName.length < 1) {
       return false;
     }
     return true;
@@ -72,7 +77,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   const isStreetAddressValid = () => {
     // Street Address Validation
-    if (StreetAddress.length < 10) {
+    if (StreetAddress.length < 1) {
       return false;
     }
     return true;
@@ -80,7 +85,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   const isCityValid = () => {
     // City Validation
-    if (City.length < 10) {
+    if (City.length < 1) {
       return false;
     }
     return true;
@@ -88,7 +93,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   const isCountryValid = () => {
     // Country Validation
-    if (Country.length < 10) {
+    if (Country.length < 1) {
       return false;
     }
     return true;
@@ -96,7 +101,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   const isContactNameValid = () => {
     // Contact Name Validation
-    if (ContactName.length < 10) {
+    if (ContactName.length < 1) {
       return false;
     }
     return true;
@@ -104,7 +109,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   const isPositionValid = () => {
     // Position Validation
-    if (Position.length < 10) {
+    if (Position.length < 1) {
       return false;
     }
     return true;
@@ -112,7 +117,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   const isPhoneNumberValid = () => {
     // Phone Number Validation
-    if (PhoneNumber.length < 10) {
+    if (PhoneNumber.length < 1) {
       return false;
     }
     return true;
@@ -120,7 +125,7 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
 
   const isEmailValid = () => {
     // Email Validation
-    if (Email.length < 10) {
+    if (Email.length < 1) {
       return false;
     }
     return true;
@@ -216,16 +221,18 @@ const WarehouseDetails = ({ title, buttonTitle }) => {
     }
 
     if (isFormValid()) {
-      // console.log(e.target.elements.Warehouse_Name.value);
-      // console.log(e.target.elements.Street_Address.value);
-      // console.log(e.target.elements.City.value);
-      // console.log(e.target.elements.Country.value);
-      // console.log(e.target.elements.Contact_Name.value);
-      // console.log(e.target.elements.Position.value);
-      // console.log(e.target.elements.Phone_Number.value);
-      // console.log(e.target.elements.Email.value);
-      // Do an update and post request on backend side here
       alert("Form Submitted");
+      // Do an update and post request on backend side here
+      actionFunction(
+        WarehouseName,
+        StreetAddress,
+        City,
+        Country,
+        ContactName,
+        Position,
+        PhoneNumber,
+        Email
+      );
     }
   };
 
