@@ -28,10 +28,10 @@ export const TableRows = ({
   return (
     <>
       {!!sortedRows.length &&
-        sortedRows.map((row, RowIndex) => {
+        sortedRows.map((row, rowIndex) => {
           return (
             <div
-              key={`${parseInt(Math.random() * 1000)}-${RowIndex}`}
+              key={`${parseInt(Math.random() * 1000)}-${rowIndex}`}
               className="table-row"
             >
               {Object.keys(row).map((key, index) => {
@@ -43,7 +43,7 @@ export const TableRows = ({
                   <div
                     key={`table-cell-${index}`}
                     className={`table-row__table-cell`}
-                    onClick={() => onRowClick(sourceRows[RowIndex])}
+                    onClick={() => onRowClick(sourceRows[rowIndex])}
                   >
                     <h4>{headerLabel}</h4>
                     {index === 0 && <TableTitleCell title={row[key]} />}
