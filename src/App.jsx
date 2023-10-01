@@ -8,6 +8,7 @@ import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import WarehouseInventoryPage from "./pages/WarehouseInventoryPage/WarehouseInventoryPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import EditInventory from "./components/EditInventory/EditInventory";
+import WarehouseEditAddPage from "./pages/WarehousesEditAddPage/WarehousesEditAddPage";
 
 function App() {
   const [inventoryList, setInventoryList] = useState([]); //temporary solution in order useParams with edit
@@ -40,7 +41,6 @@ function App() {
           path="/warehouses/:warehouseId"
           element={<WarehouseInventoryPage />}
         />
-
         {/* <Route
           path="/warehouse/:id/edit"
           element={<WarehousesPage warehouse={warehouse} />}
@@ -49,8 +49,12 @@ function App() {
           path="/warehouse/:id"
           element={<WarehousesPage warehouse={warehouse} />}
         /> */}
+        <Route
+          path="/warehouses/:warehouseID/edit"
+          element={<WarehouseEditAddPage />}
+        />
+        <Route path="/warehouses/add" element={<WarehouseEditAddPage />} />
         {/* should we leave the following in? discuss with group */}
-        {/* <Route path="warehouse/add" element={<WarehousesPage />} /> */}
         {/* <Route path="/inventory" element={<InventoryPage />} /> */}
         <Route
           path="/inventory"

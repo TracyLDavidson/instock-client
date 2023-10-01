@@ -8,6 +8,7 @@ import { PageActions } from "../../components/PageActions/PageActions";
 import { Search } from "../../components/Search/Search";
 import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
 
+import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import "./WarehousesPage.scss";
 
 const allowableProperties = [
