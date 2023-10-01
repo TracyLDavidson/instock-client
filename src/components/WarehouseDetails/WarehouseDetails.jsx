@@ -221,18 +221,7 @@ const WarehouseDetails = ({ title, buttonTitle, actionFunction }) => {
     }
 
     if (isFormValid()) {
-      // console.log(e.target.elements.Warehouse_Name.value);
-      // console.log(e.target.elements.Street_Address.value);
-      // console.log(e.target.elements.City.value);
-      // console.log(e.target.elements.Country.value);
-      // console.log(e.target.elements.Contact_Name.value);
-      // console.log(e.target.elements.Position.value);
-      // console.log(e.target.elements.Phone_Number.value);
-      // console.log(e.target.elements.Email.value);
       alert("Form Submitted");
-
-      console.log(actionFunction);
-
       // Do an update and post request on backend side here
       actionFunction(
         WarehouseName,
