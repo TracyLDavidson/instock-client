@@ -24,9 +24,10 @@ function App() {
         console.log("error:", error);
       });
   }, []);
-  if (!inventoryList.length) {
-    return <>Loading...</>;
-  }
+  // Commented out because it breaks my code
+  // if (!inventoryList.length) {
+  //   return <>Loading...</>;
+  // }
 
   return (
     <BrowserRouter>
@@ -44,7 +45,7 @@ function App() {
         {/* <Route path="/inventory" element={<InventoryPage />} /> */}
         <Route
           path="/inventory"
-          element={<Navigate to={`/inventory/${inventoryList[0].id}/edit`} />}
+          element={<Navigate to={`/inventory/${inventoryList[0]?.id}/edit`} />}
         />
         {/* <Route path="/inventory/:id" element={<InventoryPage item={item} />} /> */}
         <Route path="inventory/:id/edit" element={<EditInventory />} />

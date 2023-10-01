@@ -1,6 +1,7 @@
 import React from "react";
 import { TableHeader } from "./TableHeader";
 import { TableRows } from "./TableRows";
+
 import "./Table.scss";
 
 export const Table = ({

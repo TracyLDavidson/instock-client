@@ -1,0 +1,12 @@
+@import "/src/styles/partials/variables";
+@import "/src/styles/partials/mixins";
+
+.btn--primary {
+  @include btn;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: $primary-color--tertiary;
+  color: $background-color--white;
+}

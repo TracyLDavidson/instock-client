@@ -1,63 +1,88 @@
-import react, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { fetchAllWarehouses } from "../../utils/api";
 import { Table } from "../../components/Table/Table";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { Paper } from "../../components/Paper/Paper";
+import { PageActions } from "../../components/PageActions/PageActions";
+import { Search } from "../../components/Search/Search";
+import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
+
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import "./WarehousesPage.scss";
 
+const allowableProperties = [
+  "warehouse_name",
+  "address",
+  "contact_name",
+  "contact_email",
+  "contact_phone",
+];
+const formatWarehousesResponse = (data = []) =>
+  data.map((row) => {
+    const filteredRow = {};
+    const keys = Object.keys(row)
+      .filter((key) => allowableProperties.includes(key))
+      .forEach((key) => {
+        filteredRow[key] = row[key];
+      });
+
+    filteredRow.contact_information = `${filteredRow["contact_phone"]} ${filteredRow["contact_email"]}`;
+    delete filteredRow["contact_phone"];
+    delete filteredRow["contact_email"];
+    return filteredRow;
+  });
+
+const generateTableHeaderLabels = (rows) => {
+  const headers = Object.keys(rows[0]);
+  const sortable = [true, true, true, true, false];
+  const labels = [
+    "warehouse",
+    "address",
+    "contact name",
+    "contact information",
+  ];
+  const tableHeaders = headers.map((header, index) => {
+    return {
+      key: header,
+      label: labels[index],
+      sortable: sortable[index],
+    };
+  });
+
+  tableHeaders.push({ key: "actions", label: "actions", sortable: false });
+  return tableHeaders;
+};
+
 export default function Warehouse() {
-  // sort by in progress
   const [sortBy, setSortBy] = useState("");
+  const [tableHeaders, setTableHeaders] = useState([]);
+  const [tableRows, setTableRows] = useState([]);
 
-  const tableHeaders = [
-    { key: "warehouse", label: "warehouse", sortable: true },
-    { key: "address", label: "address", sortable: true },
-    { key: "contact_name", label: "contact name", sortable: true },
-    {
-      key: "contact_information",
-      label: "contact information",
-      sortable: true,
-    },
-    { key: "actions", label: "actions", sortable: false },
-  ];
-
-  // Table component can render both strings or components
-  const tableRows = [
-    {
-      warehouse: "Manhattan",
-      address: "503 Broadway New York, USA",
-      contact_name: "Parmin Aujla",
-      contact_information: "+1 (629) 555-0129 paujla@instock.com",
-    },
-    {
-      warehouse: () => <p>Washington</p>,
-      address: () => <p>33 Pearl Street SW, Washington, USA</p>,
-      contact_name: () => <p>Graeme Lyon</p>,
-      contact_information: () => <p>+1 (647) 504-0911 glyon@instock.com</p>,
-    },
-  ];
-
-  // ActionsComponent should be a separate ticket, sized to 2-3
-  const MockActionsComponent = () => {
-    return <button>click</button>;
-  };
+  useEffect(() => {
+    const effects = async () => {
+      const response = await fetchAllWarehouses();
+      if (response.data && response.data.length) {
+        const rows = formatWarehousesResponse(response.data);
+        const headers = generateTableHeaderLabels(rows);
+        setTableHeaders(headers);
+        setTableRows(rows);
+      }
+    };
+    effects();
+  }, []);
 
   return (
     <div className="warehouses_page">
       <div className="warehouses_page__container">
         <Paper>
-          <PageHeader
-            title="Warehouses"
-            pageActionsComponent={() => <button>Back</button>}
-            onNavigateBack={() => {}}
-          >
-            <input placeholder="search component" />
-            <button>CTA button</button>
+          <PageHeader title="Warehouses">
+            <Search />
+            <PrimaryButton>+ Add New Warehouse</PrimaryButton>
           </PageHeader>
           <Table
             headers={tableHeaders}
             rows={tableRows}
-            actionsComponent={MockActionsComponent}
+            actionsComponent={() => <PageActions />}
             onTableSort={setSortBy}
             sortBy={sortBy}
           />
