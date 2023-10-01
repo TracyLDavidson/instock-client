@@ -36,7 +36,6 @@ function App() {
         {/* <Route path="/" element={<WarehousesPage />} /> */}
         <Route path="/" element={<Navigate to={`/warehouses`} />} />
         <Route path="/warehouses" element={<WarehousesPage />} />
-        <Route path="/warehouses/add" element={() => <p>Add Warehouse</p>} />
         <Route
           path="/warehouses/:warehouseId"
           element={<WarehouseInventoryPage />}
