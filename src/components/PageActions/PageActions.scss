@@ -1,0 +1,21 @@
+@import "/src/styles/partials/breakpoints";
+
+.page-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  justify-content: space-between;
+  img {
+    text-align: center;
+    width: 25px;
+    margin: 16px 8px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+
+    @include tablet {
+      margin: unset;
+    }
+  }
+}

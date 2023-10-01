@@ -1,5 +1,6 @@
 @import "/src/styles/partials/breakpoints";
 @import "/src/styles/partials/variables";
+@import "/src/styles/partials/mixins";
 
 .table-container {
   display: table;
@@ -37,10 +38,13 @@
 
     &__header-cell:last-child {
       width: 20px;
+      div {
+        text-align: right;
+      }
     }
 
     &__sort-column {
-      width: 50px;
+      width: 40px;
     }
   }
 }
@@ -78,5 +82,20 @@
     &__cell-header {
       display: none;
     }
+  }
+}
+
+.table-title-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  cursor: pointer;
+  color: $primary-color--tertiary;
+  font-weight: 700;
+  a,
+  a:visited,
+  a:active {
+    color: $primary-color--tertiary;
   }
 }
