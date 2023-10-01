@@ -14,11 +14,4 @@
   .table {
     background-color: $background-color--white;
   }
-
-  // TITAN-10: Warehouse Details Component - TO BE REMOVED WHEN COMPONENT ADDED
-  &__details-component {
-    padding: 16px 0;
-    background-color: $secondary-color--light;
-    text-align: center;
-  }
 }

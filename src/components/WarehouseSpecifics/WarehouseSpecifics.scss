@@ -1,0 +1,37 @@
+@import "/src/styles/partials/mixins";
+@import "/src/styles/partials/variables";
+
+// TITAN-10: Warehouse Details Component - TO BE REMOVED WHEN COMPONENT ADDED
+.warehouse-details {
+  padding: 1rem;
+  border-bottom: 1px solid $secondary-color--light;
+  &__container {
+    @include tablet {
+      display: flex;
+    }
+  }
+  &__address-container {
+    padding-bottom: 2rem;
+    @include tablet {
+      width: 40%;
+      align-items: center;
+      border-right: 1px solid $secondary-color--light;
+    }
+  }
+  .address__content {
+    display: flex;
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+  &__contact-container {
+    display: flex;
+    @include tablet {
+      padding: 0 2rem;
+      width: 60%;
+    }
+  }
+  &__contact-name-container {
+    width: 50%;
+  }
+}
