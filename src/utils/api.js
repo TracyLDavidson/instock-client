@@ -24,5 +24,17 @@ const fetchWarehouseInventory = async (warehouseId) => {
     return Promise.reject(e);
   }
 };
+const fetchInventory = async () => {
+  try {
+    return await axios.get(`${API_URL}/inventory`);
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
 
-export { fetchAllWarehouses, fetchSingleWarehouse, fetchWarehouseInventory };
+export {
+  fetchAllWarehouses,
+  fetchSingleWarehouse,
+  fetchWarehouseInventory,
+  fetchInventory,
+};
