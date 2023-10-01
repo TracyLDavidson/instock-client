@@ -39,7 +39,7 @@ export default function Warehouse() {
           phoneNumber,
           email
         );
-        console.log(data);
+        // console.log(data);
       } catch (err) {
         alert("ERROR 404\nVideo not found... Redirecting to Home Page");
         Navigate("/");
@@ -70,7 +70,7 @@ export default function Warehouse() {
           phoneNumber,
           email
         );
-        console.log(data);
+        // console.log(data);
       } catch (err) {
         alert("ERROR 404\nVideo not found... Redirecting to Home Page");
         Navigate("/");

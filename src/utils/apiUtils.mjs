@@ -14,14 +14,6 @@ const postSingleWarehouse = async (
   contact_phone,
   contact_email
 ) => {
-  console.log(warehouse_name);
-  console.log(address);
-  console.log(city);
-  console.log(country);
-  console.log(contact_name);
-  console.log(contact_position);
-  console.log(contact_phone);
-  console.log(contact_email);
   return axios.post(`${API_URL}:${API_PORT}/warehouses/add`, {
     warehouse_name,
     address,
@@ -45,14 +37,6 @@ const putSingleWarehouse = async (
   contact_phone,
   contact_email
 ) => {
-  console.log(warehouse_name);
-  console.log(address);
-  console.log(city);
-  console.log(country);
-  console.log(contact_name);
-  console.log(contact_position);
-  console.log(contact_phone);
-  console.log(contact_email);
   return axios.put(`${API_URL}:${API_PORT}/warehouses/${warehouseID}/edit`, {
     warehouse_name,
     address,
