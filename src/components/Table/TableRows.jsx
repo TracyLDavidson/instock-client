@@ -9,7 +9,6 @@ export const TableRows = ({
   actionsComponent = () => {},
 }) => {
   const [sortedRows, setSortedRows] = useState(rows);
-
   useEffect(() => {
     const newSortedRows = [...rows];
 
@@ -23,37 +22,38 @@ export const TableRows = ({
     });
 
     setSortedRows(newSortedRows);
-  }, [sortBy]);
+  }, [sortBy, rows]);
 
   return (
     <>
-      {sortedRows.map((row, index) => {
-        return (
-          <div
-            key={`${parseInt(Math.random() * 1000)}-${index}`}
-            className="table-row"
-          >
-            {Object.keys(row).map((key, index) => {
-              const headerLabel = headers.find(
-                (header) => header.key === key
-              ).label;
-              return (
-                <div
-                  key={`table-cell-${index}`}
-                  className="table-row__table-cell"
-                >
-                  <h4>{headerLabel}</h4>
-                  {index === 0 && <TableTitleCell title={row[key]} />}
-                  {index !== 0 && typeof row[key] === "function"
-                    ? row[key]()
-                    : index !== 0 && row[key]}
-                </div>
-              );
-            })}
-            <div className="table-row__table-cell">{actionsComponent()}</div>
-          </div>
-        );
-      })}
+      {!!sortedRows.length &&
+        sortedRows.map((row, index) => {
+          return (
+            <div
+              key={`${parseInt(Math.random() * 1000)}-${index}`}
+              className="table-row"
+            >
+              {Object.keys(row).map((key, index) => {
+                const headerLabel = headers.find(
+                  (header) => header.key === key
+                ).label;
+                return (
+                  <div
+                    key={`table-cell-${index}`}
+                    className="table-row__table-cell"
+                  >
+                    <h4>{headerLabel}</h4>
+                    {index === 0 && <TableTitleCell title={row[key]} />}
+                    {index !== 0 && typeof row[key] === "function"
+                      ? row[key]()
+                      : index !== 0 && row[key]}
+                  </div>
+                );
+              })}
+              <div className="table-row__table-cell">{actionsComponent()}</div>
+            </div>
+          );
+        })}
     </>
   );
 };

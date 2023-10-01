@@ -70,7 +70,6 @@ export default function Warehouse() {
     effects();
   }, []);
 
-  console.log({ tableRows });
   return (
     <div className="warehouses_page">
       <div className="warehouses_page__container">
