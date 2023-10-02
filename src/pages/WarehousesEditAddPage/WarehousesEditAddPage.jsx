@@ -142,8 +142,8 @@ export default function Warehouse() {
   }
 
   return (
-    <div className="warehouses_page">
-      <div className="warehouses_page__container">
+    <div className="warehouses__edit-add-page">
+      <div className="warehouses__edit-add-page-container">
         <Paper>
           <WarehouseDetails
             title={titleSwitch()}
