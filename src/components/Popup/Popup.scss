@@ -24,6 +24,8 @@
     flex-direction: column;
     justify-content: space-between;
     @include tablet {
+      width: 50%;
+      height: 50%;
     }
     @include desktop {
     }
