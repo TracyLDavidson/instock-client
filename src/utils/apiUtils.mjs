@@ -4,6 +4,10 @@ import axios from "axios";
 const API_URL = "http://localhost";
 const API_PORT = "8080";
 
+const fetchSingleWarehouse = async (warehouseID) => {
+  return axios.get(`${API_URL}:${API_PORT}/warehouses/${warehouseID}`);
+};
+
 const postSingleWarehouse = async (
   warehouse_name,
   address,
@@ -49,4 +53,4 @@ const putSingleWarehouse = async (
   });
 };
 
-export { postSingleWarehouse, putSingleWarehouse };
+export { fetchSingleWarehouse, postSingleWarehouse, putSingleWarehouse };
