@@ -1,0 +1,175 @@
+@use "../../styles/partials/mixins" as *;
+// @use '../../styles/partials/variables' as *;
+
+// * {
+//     padding: 0;
+//     margin: 0;
+// }
+
+.edit-container {
+  padding: 0 16px;
+}
+
+.title {
+  @include flex-row;
+  border-bottom: 1px solid $secondary-color--light;
+
+  &__img {
+    @include flex-col;
+  }
+
+  &__title {
+    @include flex-col;
+    color: green;
+  }
+}
+
+.form {
+  @include flex-col;
+
+  @include tablet {
+    
+}
+}
+
+.form-flex {
+  @include flex-col;
+
+  @include tablet {
+    @include flex-row;
+    padding: 2.4rem 0 2.4rem;
+  }
+}
+
+.label {
+  @include flex-col;
+  margin: 0 0 0.4rem;
+}
+
+.input {
+  margin: 0 0 1.6rem;
+  padding: 0 0 0 1.6rem;
+}
+
+.details {
+  @include flex-col;
+  padding: 0 2.4rem;
+  border-bottom: 1px solid $secondary-color--light;
+
+  @include tablet {
+    padding: 0 3.2rem;
+    width: 50%;
+    border-bottom: 0;
+    border-right: 1px solid $secondary-color--light;
+  }
+
+  &__title {
+    width: 100%;
+    margin: 1.6rem 0 2.4rem;
+
+    @include tablet {
+        margin: 0 0 2.4rem;
+    }
+  }
+
+  .input-item {
+    @include flex-col;
+    height: 36px;
+
+    @include input-style;
+  }
+
+  .input-description {
+    @include flex-col;
+    height: 120px;
+    @include input-style;
+    padding: 1.6rem 0 0 1.6rem;
+    font-family: "regular";
+    resize: none;
+  }
+
+  .input-description[type="text"] {
+    vertical-align: top;
+  }
+
+  .select-category {
+    @include flex-col;
+    height: 36px;
+    @include input-style;
+    padding-top: 0.8rem;
+  }
+}
+
+.availability {
+  @include flex-col;
+  padding: 0 2.4rem;
+
+  @include tablet {
+    width: 50%;
+    padding: 0 3.2rem;
+  }
+
+  &__title {
+    @include flex-col;
+    width: 100%;
+    margin: 1.6rem 0 2.4rem;
+
+    @include tablet {
+        margin: 0 0 2.4rem;
+    }
+  }
+
+  &__status {
+    @include flex-row;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 0;
+
+    .status-container {
+      width: 50%;
+
+      .radio-item__text {
+        margin: 0 0 0 0.8rem;
+      }
+    }
+  }
+
+  .input-quantity {
+    @include flex-col;
+    // width:100%;
+    height: 36px;
+    @include input-style;
+  }
+
+  .select-warehouse {
+    @include flex-col;
+    height: 36px;
+    @include input-style;
+    // line-height: normal;
+    justify-content: center;
+    padding-top: 0.8rem;
+  }
+}
+
+.button-container {
+  @include flex-row;
+  background-color: $background-color--light;
+  gap: 1.6rem;
+  padding: 1.6rem 2.4rem;
+
+  .btn-style {
+    border: 1px solid $secondary-color--light;
+    border-radius: 20px;
+    width: 100%;
+    height: 36px;
+  }
+
+//   .btn-cancel {
+//   }
+
+  .btn-submit {
+    color: $primary-color--light;
+    background-color: $primary-color--tertiary;
+  }
+}
+
