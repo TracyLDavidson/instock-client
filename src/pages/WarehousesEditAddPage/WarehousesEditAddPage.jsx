@@ -131,7 +131,6 @@ export default function Warehouse() {
   if (!SelectedWarehouse) {
     setSelectedWarehouse({
       warehouse_name: "",
-      warehouse_name: "",
       address: "",
       city: "",
       country: "",
