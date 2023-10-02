@@ -9,6 +9,7 @@ import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
 import { Search } from "../../components/Search/Search";
 import editIconWhite from "../../assets/icons/edit-white.svg";
 import Popup from "../../components/Popup/Popup";
+import { deleteInventoryId } from "../../utils/api";
 
 import "./InventoryPage.scss";
 
@@ -114,14 +115,14 @@ export default function WarehouseInventoryPage() {
             )}
             onTableSort={setSortBy}
             sortBy={sortBy}
-            onRowClick={(row) => navigate(`/inventory/${row.id}/view`)}
+            onRowClick={(row) => navigate(`/inventory/${row.id}/edit`)}
           />
           {showDeleteModal && (
             <Popup
               onCancel={() => setShowDeleteModal(false)}
               onConfirm={async () => {
                 try {
-                  await deleteWarehouseId(selectedTableRow.id);
+                  await deleteInventoryId(selectedTableRow.id);
                   setShowDeleteModal(false);
                   setSelectedTableRow({});
                   await effects();
