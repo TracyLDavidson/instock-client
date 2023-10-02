@@ -12,40 +12,40 @@
 }
 
 @mixin page-header {
-  font-size: 2.1538rem;
-  line-height: 2.7692rem;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
   font-family: "semi-bold";
 
   @include tablet {
-    font-size: 2.2857rem;
-    line-height: 2.8571rem;
+    font-size: 3.2rem;
+    line-height: 4rem;
   }
 }
 
 @mixin subheader {
-  font-size: 1.5385rem;
-  line-height: 2.1538rem;
+  font-size: 2rem;
+  line-height: 2.8rem;
   font-family: "semi-bold";
 
   @include tablet {
-    font-size: 1.8571rem;
-    line-height: 2.5rem;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
   }
 }
 
 @mixin LabelsLinksAndButtons {
-  font-size: 1rem;
-  line-height: 1.5385rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
   font-family: "regular";
   @include tablet {
-    font-size: 1rem;
-    line-height: 1.5714rem;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
   }
 }
 
 @mixin table-header {
-  font-size: 0.8462rem;
-  line-height: 1.2308rem;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
   font-family: "regular";
   color: $secondary-color--dark;
   text-transform: uppercase;
@@ -53,66 +53,66 @@
   margin: 8px 0;
 
   @include tablet {
-    font-size: 0.8571rem;
-    line-height: 1.2857rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
   }
 }
 
 @mixin body-lrg {
-  font-size: 1.1538rem;
-  line-height: 2rem;
+  font-size: 1.5rem;
+  line-height: 2.6rem;
   font-family: "regular";
   @include tablet {
-    font-size: 1.1429rem;
-    line-height: 2rem;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
   }
 }
 
 @mixin body-med {
-  font-size: 1rem;
-  line-height: 1.5385rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
   font-family: "regular";
   @include tablet {
-    font-size: 1rem;
-    line-height: 1.5714rem;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
   }
 }
 
 @mixin body-sm {
-  font-size: 0.8462rem;
-  line-height: 1.2308rem;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
   font-family: "regular";
   @include tablet {
-    font-size: 0.8571rem;
-    line-height: 1.2857rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
   }
 }
 
-@mixin page-gutter {
-  margin: 0 1.2308rem;
-  padding: 0 1.2308rem;
-  @include tablet {
-    margin: 0 2.2857rem;
-    padding: 0 1.7143rem;
-  }
-  @include desktop {
-    margin: 0 auto;
-    padding: 0 1.7143rem;
-  }
-}
+// @mixin page-gutter {
+//   margin: 0 1.6rem;
+//   padding: 0 1.6rem;
+//   @include tablet {
+//     margin: 0 3.2rem;
+//     padding: 0 2.4rem;
+//   }
+//   @include desktop {
+//     margin: 0 auto;
+//     padding: 0 2.4rem;
+//   }
+// }
 
 @mixin container {
   width: 100%;
-  padding: 0 16px;
+  padding: 0 1.6rem;
   @include desktop {
-    padding: 0 16px;
+    padding: 0 1.6rem;
     margin: 0 auto;
     max-width: 1020px;
   }
 }
 
 @mixin input-style {
-  border-radius: 20px;
+  border-radius: 2rem;
   border: 1px solid black;
 }
 

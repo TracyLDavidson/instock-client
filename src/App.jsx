@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import WarehouseInventoryPage from "./pages/WarehouseInventoryPage/WarehouseInventoryPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
-import EditInventory from "./components/EditInventory/EditInventory";
+import EditInventory from "./pages/EditInventoryPage/EditInventory";
 import WarehouseEditAddPage from "./pages/WarehousesEditAddPage/WarehousesEditAddPage";
 import Footer from "./components/Footer/Footer";
 
