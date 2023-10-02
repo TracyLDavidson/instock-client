@@ -2,7 +2,6 @@
 @import "/src/styles/partials/variables";
 
 .inventory_page {
-  // padding: 0 16px;
   &__container {
     @include container;
     display: flex;
