@@ -2,6 +2,7 @@ import "../Popup/Popup.scss";
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { deleteSingleWarehouse } from "../../utils/apiUtils.mjs";
+import closeIcon from "../../assets/icons/close.svg";
 
 /*
   Popup component 
@@ -22,13 +23,16 @@ const Popup = (props) => {
   };
 
   const deleteHandler = () => {
-    deleteSingleWarehouseFunction(38);
+    deleteSingleWarehouseFunction(props.id);
   };
 
   return props.trigger ? (
     <div className="popup">
       <div className="popup__inner">
         <div className="popup__content">
+          <div className="popup__img-container">
+            <img src={closeIcon} alt="close icon" className="popup__img" />
+          </div>
           <h1>{`Delete Washington warehouse?`}</h1>
           <p>
             {`Please confirm that you'd like to delete the Washington from the

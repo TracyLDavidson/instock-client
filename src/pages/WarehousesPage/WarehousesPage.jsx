@@ -115,7 +115,7 @@ export default function WarehousesPage() {
           <Popup
             trigger={buttonPopup}
             setTrigger={setbuttonPopup}
-            id={1}
+            id={39}
           ></Popup>
         </Paper>
       </div>
