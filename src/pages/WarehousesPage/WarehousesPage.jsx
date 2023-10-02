@@ -131,6 +131,9 @@ export default function WarehousesPage() {
               }}
               confirmText={"Delete"}
               cancelText={"Cancel"}
+              Name={selectedTableRow.warehouse_name}
+              bodyText={"from the list of warehouses"}
+              headerText={"warehouse"}
             ></Popup>
           )}
         </Paper>

@@ -8,6 +8,8 @@ import { PageActions } from "../../components/PageActions/PageActions";
 import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
 import { Search } from "../../components/Search/Search";
 import editIconWhite from "../../assets/icons/edit-white.svg";
+import Popup from "../../components/Popup/Popup";
+import { deleteInventoryId } from "../../utils/api";
 
 import "./InventoryPage.scss";
 
@@ -64,6 +66,8 @@ export default function WarehouseInventoryPage() {
   const [tableHeaders, setTableHeaders] = useState([]);
   const [tableRows, setTableRows] = useState([]);
   const [sourceRows, setSourceRows] = useState([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedTableRow, setSelectedTableRow] = useState({});
 
   // const handleRowId = (id) => {
   //   navigate(`/inventory/${id}/edit`);
@@ -102,13 +106,39 @@ export default function WarehouseInventoryPage() {
             sourceRows={sourceRows}
             actionsComponent={(row) => (
               <PageActions
+                onDelete={() => {
+                  setSelectedTableRow(row);
+                  setShowDeleteModal(true);
+                }}
                 onEdit={() => navigate(`/inventory/${row.id}/edit`)}
               />
             )}
             onTableSort={setSortBy}
             sortBy={sortBy}
-            onRowClick={(row) => navigate(`/inventory/${row.id}/view`)}
+            onRowClick={(row) => navigate(`/inventory/${row.id}/edit`)}
           />
+          {showDeleteModal && (
+            <Popup
+              onCancel={() => setShowDeleteModal(false)}
+              onConfirm={async () => {
+                try {
+                  await deleteInventoryId(selectedTableRow.id);
+                  setShowDeleteModal(false);
+                  setSelectedTableRow({});
+                  await effects();
+                } catch (e) {
+                  console.log(
+                    "there was an error trying to delete the warehouse"
+                  );
+                }
+              }}
+              confirmText={"Delete"}
+              cancelText={"Cancel"}
+              Name={selectedTableRow.item_name}
+              bodyText={"from the inventory list"}
+              headerText={"inventory item"}
+            ></Popup>
+          )}
         </Paper>
       </div>
     </div>
