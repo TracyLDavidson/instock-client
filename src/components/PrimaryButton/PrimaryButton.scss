@@ -9,4 +9,11 @@
   gap: 0.4rem;
   background-color: $primary-color--tertiary;
   color: $background-color--white;
+
+  p {
+    display: none;
+    @include tablet {
+      display: inline-block;
+    }
+  }
 }
