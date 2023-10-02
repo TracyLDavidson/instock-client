@@ -3,12 +3,12 @@
 .page-actions {
   display: flex;
   flex-wrap: nowrap;
-  gap: 8px;
+  gap: 0.8rem;
   justify-content: space-between;
   img {
     text-align: center;
-    width: 25px;
-    margin: 16px 8px;
+    width: 2.5rem;
+    margin: 1.6rem 0.8rem;
     cursor: pointer;
     &:hover {
       opacity: 0.5;
