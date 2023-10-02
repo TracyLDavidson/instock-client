@@ -3,8 +3,6 @@
 
 .page-header {
   @include container;
-  //   position: absolute;
-  //   top: 12.2rem;
   width: 100%;
   min-height: calc(16.8rem / 2);
   border-bottom: 0.1rem solid $background-color--dark;
