@@ -2,6 +2,7 @@
 
 .edit-container {
   padding: 0 1.6rem;
+  // background-color: white;
   @include tablet {
     padding: 0 3.2rem;
 
@@ -12,17 +13,29 @@
   }
 }
 
+.paper {
+  background-color: white;
+}
+
 .title {
   @include flex-row;
   border-bottom: 1px solid $secondary-color--light;
+  justify-content: center;
+  padding: 3.2rem 1.6rem 2.1rem;
+
+  @include tablet {
+    justify-content: flex-start;
+    padding: 3.2rem 3.2rem 2.1rem;
+  }
+
 
   &__img {
     @include flex-col;
+    padding: 0 0.8rem 0 0;
   }
 
-  &__title {
+  &__text {
     @include flex-col;
-    color: green;
   }
 }
 
@@ -60,10 +73,6 @@
     }
 
   &.error {
-    // width: 100%; 
-    // height: 100%; 
-    // background: white; 
-    // border-radius: 2rem; 
     border: 1px solid $highlight-color--2;
   }
 }
@@ -107,7 +116,9 @@
 
 .input-description {
   @include flex-col;
-  height: 120px;
+  min-height: 12rem;
+  max-height: 12rem;
+  height: 12rem;
   @include input-style;
   padding: 1.6rem 0 0 1.6rem;
   font-family: "regular";
@@ -116,6 +127,8 @@
 
 .input-item {
   @include flex-col;
+  min-height: 36px;
+  max-height: 36px;
   height: 36px;
 
   @include input-style;
@@ -123,6 +136,8 @@
 
 .select-category {
   @include flex-col;
+  min-height: 36px;
+  max-height: 36px;
   height: 36px;
   @include input-style;
   padding-top: 0.8rem;
@@ -171,13 +186,17 @@
 
 .input-quantity {
   @include flex-col;
-  height: 36px;
+  min-height: 3.6rem;
+  max-height: 3.6rem;
+  height: 3.6rem;
   @include input-style;
 }
 
 .select-warehouse {
   @include flex-col;
-  height: 36px;
+  min-height: 3.6rem;
+  max-height: 3.6rem;
+  height: 3.6rem;
   @include input-style;
   justify-content: center;
   padding-top: 0.8rem;
@@ -190,7 +209,7 @@
   background-repeat: no-repeat;
   background-image: url("../../assets/icons/dropdown.svg");
   background-position: right center;
-  padding-right: 10px;
+  padding-right: 1rem;
 }
 
 .button-container {
@@ -202,9 +221,9 @@
 
   .btn-style {
     border: 1px solid $secondary-color--light;
-    border-radius: 20px;
+    border-radius: 2rem;
     width: 100%;
-    height: 36px;
+    height: 3.6rem;
 
     @include tablet {
       width: auto;

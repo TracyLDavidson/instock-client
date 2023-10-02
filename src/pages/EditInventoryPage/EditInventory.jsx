@@ -197,7 +197,6 @@ export default function EditInventory({ mode }) {
     <div className="edit-container">
       <Paper>
         <div className="title">
-          <img className="title__img" />
           <img src={backArrow} alt="back arrow" className="title__img" />
           <h1 className="title__text">
             {mode === "add" ? "Add Inventory Item" : "Edit Inventory Item"}
@@ -294,7 +293,7 @@ export default function EditInventory({ mode }) {
                   <input
                     id="quantityInput"
                     name="quantityInput"
-                    className="input input-quantity"
+                    className={`input input-quantity ${quantityError ? 'error' : ''}`}
                     value={quantity}
                     onChange={handleQuantityChange}
                   ></input>
@@ -311,7 +310,7 @@ export default function EditInventory({ mode }) {
                 name="warehouseSelect"
                 value={selectedWarehouse}
                 onChange={handleWarehouseChange}
-                className="input select-item select-warehouse"
+                className={`input select-item select-warehouse ${quantityError ? 'error' : ''}`}
               >
                 <option value="">Please select</option>
                 {warehouses.map((warehouse) => (
