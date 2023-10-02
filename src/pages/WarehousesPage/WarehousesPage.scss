@@ -4,15 +4,13 @@
   padding: 0 16px;
   &__container {
     @include container;
-    &__container {
-      display: flex;
-      justify-content: center;
-    }
-    .paper {
-      margin-top: -85px;
-    }
-    .table {
-      background-color: $background-color--white;
-    }
+    display: flex;
+    justify-content: center;
+  }
+  .paper {
+    margin-top: -85px;
+  }
+  .table {
+    background-color: $background-color--white;
   }
 }

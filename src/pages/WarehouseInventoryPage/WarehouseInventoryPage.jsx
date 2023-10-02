@@ -103,21 +103,12 @@ export default function WarehouseInventoryPage() {
           <PageHeader
             title={warehouseDetails.warehouse_name}
             onNavigateBack={() => navigate("/")}
-            pageActionsComponent={() => {
-              return (
-                <PrimaryButton
-                  onClick={() =>
-                    navigate(
-                      `/warehouses/${warehouseDetails.warehouse_id}/edit`
-                    )
-                  }
-                >
-                  <img src={editIconWhite} alt="An edit icon" />
-                  <p>Edit</p>
-                </PrimaryButton>
-              );
-            }}
-          ></PageHeader>
+          >
+            <PrimaryButton>
+              <img src={editIconWhite} alt="An edit icon" />
+              Edit
+            </PrimaryButton>
+          </PageHeader>
           <div className="warehouse_inventory_page__details-component">
             <WarehouseSpecifics />
             {/* TITAN-10: Warehouse Details Component  */}
