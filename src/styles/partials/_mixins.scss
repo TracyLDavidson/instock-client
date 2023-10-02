@@ -88,19 +88,6 @@
   }
 }
 
-// @mixin page-gutter {
-//   margin: 0 1.6rem;
-//   padding: 0 1.6rem;
-//   @include tablet {
-//     margin: 0 3.2rem;
-//     padding: 0 2.4rem;
-//   }
-//   @include desktop {
-//     margin: 0 auto;
-//     padding: 0 2.4rem;
-//   }
-// }
-
 @mixin container {
   width: 100%;
   padding: 0 1.6rem;
@@ -121,12 +108,13 @@
   padding: 8px 8px;
   border-radius: 25px;
   width: 100%;
-  min-width: 80px;
+  min-width: 40px;
   text-align: center;
   &:hover {
     opacity: 0.5;
   }
   @include tablet {
+    min-width: 80px;
     margin: 0;
     padding: 8px 16px;
     width: max-content;
