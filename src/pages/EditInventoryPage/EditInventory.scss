@@ -151,25 +151,47 @@
   }
 }
 
+.select-item {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../../assets/icons/dropdown.svg'); /* Replace 'arrow.png' with your image URL */
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 10px;
+}
+
 .button-container {
   @include flex-row;
   background-color: $background-color--light;
   gap: 1.6rem;
   padding: 1.6rem 2.4rem;
+  flex-direction: row-reverse;
 
   .btn-style {
     border: 1px solid $secondary-color--light;
     border-radius: 20px;
     width: 100%;
     height: 36px;
+
+    @include tablet {
+        width: auto;
+        padding: 0 1.6rem;
+    }
   }
 
-//   .btn-cancel {
-//   }
+  .btn-cancel {
+    @include tablet {
+        order: 2;
+    }
+  }
 
   .btn-submit {
     color: $primary-color--light;
     background-color: $primary-color--tertiary;
+    @include tablet {
+        order: 1;
+    }
   }
 }
 

@@ -146,7 +146,7 @@ export default function EditInventory() {
                 name="categorySelect"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className="input select-category"
+                className="input select-item select-category"
               >
                 <option value="">Please select</option>
                 {categories.map((category) => (
@@ -207,7 +207,7 @@ export default function EditInventory() {
                 name="warehouseSelect"
                 value={selectedWarehouse}
                 onChange={handleWarehouseChange}
-                className="input select-warehouse"
+                className="input select-item select-warehouse"
               >
                 <option value="">Please select</option>
                 {warehouses.map((warehouse) => (
