@@ -1,2 +1,8 @@
 @import "/src/styles/partials/mixins";
 @import "/src/styles/partials/variables";
+
+.inventory-details {
+  .paper {
+    margin-top: -85px;
+  }
+}

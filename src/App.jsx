@@ -7,15 +7,14 @@ import Header from "./components/Header/Header";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import WarehouseInventoryPage from "./pages/WarehouseInventoryPage/WarehouseInventoryPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
+import InventorySpecifics from "./components/InventorySpecifics/InventorySpecifics";
 import EditInventory from "./pages/EditInventoryPage/EditInventory";
 import WarehouseEditAddPage from "./pages/WarehousesEditAddPage/WarehousesEditAddPage";
 import Footer from "./components/Footer/Footer";
 
-
 function App() {
   return (
     <BrowserRouter>
-      
       <Header />
 
       <Routes>
@@ -33,8 +32,8 @@ function App() {
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="inventory/:id/edit" element={<EditInventory />} />
         <Route
-          path="inventory/:id/view"
-          element={() => <p>Inventory View Item</p>}
+          path="inventory/:inventoryId/view"
+          element={<InventorySpecifics />}
         />
       </Routes>
       <Footer />
