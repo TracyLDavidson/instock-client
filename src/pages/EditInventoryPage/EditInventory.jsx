@@ -5,7 +5,7 @@ import axios from "axios";
 import backArrow from "../../assets/icons/back-arrow.svg";
 import { Paper } from "../../components/Paper/Paper";
 
-export default function EditInventory() {
+export default function EditInventory({ mode }) {
   const [itemName, setItemName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [status, setStatus] = useState("");
@@ -14,6 +14,11 @@ export default function EditInventory() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [warehouses, setWarehouses] = useState([]);
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
+  const [itemNameError, setItemNameError] = useState("");
+  const [itemDescriptionError, setItemDescriptionError] = useState("");
+  const [selectedCategoryError, setSelectedCategoryError] = useState("");
+  const [selectedWarehouseError, setSelectedWarehouseError] = useState("");
+  const [quantityError, setQuantityError] = useState("");
   const { id } = useParams();
   const url = `http://localhost:8080`;
 
@@ -41,9 +46,10 @@ export default function EditInventory() {
       });
   }, []);
 
-  // fetch data from database
-  useEffect(() => {
-    axios
+  // fetch data from database    //// edit for add vs. edit
+  useEffect(() => { 
+    if (mode === "edit") {
+      axios
       .get(`${url}/inventory/${id}`)
       .then((response) => {
         console.log(response.data[0]);
@@ -60,37 +66,90 @@ export default function EditInventory() {
         setQuantity(data.quantity);
       })
       .catch((error) => {
-        console.error("Error from EditInventory:", error);
+        console.error("Error from EditInventory GET:", error);
       });
+    } else if (mode === "add") {
+      setStatus("In Stock");
+      setQuantity(0);
+    }
+
   }, []);
 
   // Event Handlers
   const handleItemNameChange = (e) => {
     setItemName(e.target.value);
   };
-
   const handleItemDescriptionChange = (e) => {
     setItemDescription(e.target.value);
   };
-
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
   };
-
   const handleStatusChange = (e) => {
     setStatus(e.target.value);
   };
-
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
   };
-
   const handleWarehouseChange = (e) => {
     setSelectedWarehouse(e.target.value);
   };
 
+  const validateForm = () => {
+    let hasError = false;
+
+    // Validate Item Name
+    if (itemName.trim().length < 2) {
+      setItemNameError("Item name must be at least 2 characters.");
+      hasError = true;
+    } else {
+      setItemNameError("");
+    }
+
+    // Validate Item Description
+    if (itemDescription.trim().length < 2) {
+      setItemDescriptionError("Item description must be at least 2 characters.");
+      hasError = true;
+    } else {
+      setItemDescriptionError("");
+    }
+
+    // Validate Selected Category
+    if (!selectedCategory) {
+      setSelectedCategoryError("Please select a category.");
+      hasError = true;
+    } else {
+      setSelectedCategoryError("");
+    }
+
+    // Validate Selected Warehouse
+    if (!selectedWarehouse) {
+      setSelectedWarehouseError("Please select a warehouse.");
+      hasError = true;
+    } else {
+      setSelectedWarehouseError("");
+    }
+
+    // Validate Quantity and Status
+    if (quantity === 0) {
+      setStatus("Out of Stock");
+      setQuantityError("");
+    } else if (quantity > 0) {
+      setStatus("In Stock");
+      setQuantityError("");
+    } else {
+      setQuantityError("Quantity must be a positive integer.");
+      hasError = true;
+    }
+
+    return !hasError;
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(validateForm()) {
     const updatedInventory = {
       item_name: itemName,
       description: itemDescription,
@@ -100,7 +159,8 @@ export default function EditInventory() {
       warehouse_id: selectedWarehouse,
     };
 
-    axios
+    if (mode === "edit") {
+      axios
       .post(`${url}/inventory/${id}/edit`, updatedInventory)
       .then((response) => {
         console.log("Item updated sucessfully:", response.data);
@@ -108,7 +168,33 @@ export default function EditInventory() {
       .catch((error) => {
         console.error("error updating item:", error);
       });
-  };
+    } else if ( mode === "add" ) {
+      axios
+        .post(`${url}/inventory/add`, itemData)
+        .then((response) => {
+          console.log("Successfully added item:", response.data);
+          history.push("/inventory");
+        })
+        .catch((error) => {
+          console.error("Error adding item:", error);
+        });
+    }
+  }};
+
+  const submitButton = (
+    <button
+      className={`btn-style btn-submit ${mode === "add" ? "btn-submit--add" : ""}`}
+      type="submit"
+    >
+      {mode === "add" ? "Add Item" : "Save"}
+    </button>
+  );
+
+  const cancelButton = (
+    <button className="btn-style btn-cancel" type="button">
+      Cancel
+    </button>
+  );
 
   return (
     <div className="edit-container">
@@ -116,7 +202,9 @@ export default function EditInventory() {
         <div className="title">
           <img className="title__img" />
           <img src={backArrow} alt="back arrow" className="title__img" />
-          <h1 className="title__text">Edit Inventory Item</h1>
+          <h1 className="title__text">
+          {mode === "add" ? "Add Inventory Item" : "Edit Inventory Item"}
+            </h1>
         </div>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-flex">
@@ -130,6 +218,7 @@ export default function EditInventory() {
                 onChange={handleItemNameChange}
                 className="input input-item"
               ></input>
+              {itemNameError && <div className="error-message">{itemNameError}</div>}
               <label className="label">Description</label>
               <textarea
                 placeholder="Please enter a brief item description..."
@@ -219,8 +308,10 @@ export default function EditInventory() {
             </div>
           </div>
           <div className="button-container">
-            <button className="btn-style btn-cancel" type="button">Cancel</button>
-            <button className="btn-style btn-submit" type="submit">Submit</button>
+            {submitButton}
+            {cancelButton}
+            {/* <button className="btn-style btn-cancel" type="button">Cancel</button> */}
+            {/* <button className="btn-style btn-submit" type="submit">Submit</button> */}
           </div>
         </form>
       </Paper>
