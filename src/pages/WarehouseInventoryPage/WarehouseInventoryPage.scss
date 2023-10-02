@@ -2,7 +2,15 @@
 @import "/src/styles/partials/variables";
 
 .warehouse_inventory_page {
-  padding: 0 16px;
+
+  @include tablet {
+    padding: 0 1.6rem;
+  }
+
+  @include desktop {
+    padding: 0;
+  }
+
   &__container {
     @include container;
     display: flex;

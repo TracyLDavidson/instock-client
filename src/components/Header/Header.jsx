@@ -1,6 +1,6 @@
 import "./Header.scss";
 import { Link } from "react-router-dom";
-import logo from "./InStock-Logo_1x.png";
+import logo from "./InStock-Logo.svg";
 
 export default function Header() {
   return (
@@ -14,17 +14,16 @@ export default function Header() {
           <div className="header__buttoncontainer">
             <Link
               to="/warehouses"
-              className="header__buttoncontainer-warehouses"
+              className="header__buttoncontainer--warehouses"
             >
               Warehouses
             </Link>
           </div>
-
           <div className="header__buttoncontainer">
             <Link
               to="/inventory"
             //   type="button"
-              className="header__buttoncontainer-invebtory"
+              className="header__buttoncontainer--inventory"
             >
               Inventory
             </Link>
