@@ -7,7 +7,7 @@ import {
   fetchSingleWarehouse,
   postSingleWarehouse,
   putSingleWarehouse,
-} from "../../utils/apiUtils.mjs";
+} from "../../utils/api.js";
 
 export default function Warehouse() {
   /* useStates Variables */
