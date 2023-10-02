@@ -79,13 +79,19 @@ export default function WarehouseInventoryPage() {
         );
         if (singleWarehouseRes.data && warehouseInventoryRes.data) {
           const rows = formatResponse(warehouseInventoryRes.data);
-          const headers = generateTableHeaderLabels(rows);
-          setTableHeaders(headers);
-          setTableRows(rows);
+          if (rows.length !== 0) {
+            const headers = generateTableHeaderLabels(rows);
+            setTableHeaders(headers);
+            setTableRows(rows);
+          }
+
           setSourceRows(warehouseInventoryRes.data);
+
           setWarehouseDetails(singleWarehouseRes.data[0]);
         }
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
     };
     effects();
   }, [params.warehouseId]);
@@ -97,21 +103,12 @@ export default function WarehouseInventoryPage() {
           <PageHeader
             title={warehouseDetails.warehouse_name}
             onNavigateBack={() => navigate("/")}
-            pageActionsComponent={() => {
-              return (
-                <PrimaryButton
-                  onClick={() =>
-                    navigate(
-                      `/warehouses/${warehouseDetails.warehouse_id}/edit`
-                    )
-                  }
-                >
-                  <img src={editIconWhite} alt="An edit icon" />
-                  <p>Edit</p>
-                </PrimaryButton>
-              );
-            }}
-          ></PageHeader>
+          >
+            <PrimaryButton>
+              <img src={editIconWhite} alt="An edit icon" />
+              Edit
+            </PrimaryButton>
+          </PageHeader>
           <div className="warehouse_inventory_page__details-component">
             <WarehouseSpecifics />
           </div>

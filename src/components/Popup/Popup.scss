@@ -1,0 +1,113 @@
+@use "../../styles/partials/mixins" as *;
+
+/* 
+  Popup CSS Properties 
+*/
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include tablet {
+      width: 50%;
+      height: 50%;
+    }
+    @include desktop {
+    }
+  }
+
+  &__img-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__img {
+    height: 24px;
+    width: 24px;
+    display: flex;
+
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__link {
+    width: 100%;
+    @include tablet {
+      width: auto;
+    }
+    @include desktop {
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__cancel-btn {
+    color: $secondary-color--dark;
+    background-color: $primary-color--light;
+    border: 1px solid $secondary-color--light;
+    border-radius: 20px;
+    width: 100%;
+    height: 36px;
+    margin-right: 16px;
+    padding: 0 16px;
+    @include tablet {
+      height: 38px;
+      width: auto;
+    }
+    @include desktop {
+    }
+  }
+
+  &__action-btn {
+    color: $primary-color--light;
+    background-color: $highlight-color--2;
+    border: 1px solid $secondary-color--light;
+    border-radius: 20px;
+    width: 100%;
+    height: 36px;
+    padding: 0 16px;
+    @include tablet {
+      height: 38px;
+      width: auto;
+    }
+    @include desktop {
+    }
+  }
+}

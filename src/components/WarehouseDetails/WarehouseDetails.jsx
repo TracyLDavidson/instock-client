@@ -3,26 +3,41 @@ import "./WarehouseDetails.scss";
 import WareHouseDetailInvalid from "../WarehouseDetailInvalid/WarehouseDetailInvalid";
 import Textbox from "../Textbox/Textbox.jsx";
 import backArrow from "../../assets/icons/back-arrow.svg";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 /*
     Warehouse Details Component
 */
 
-const WarehouseDetails = ({ title, buttonTitle, actionFunction }) => {
+const WarehouseDetails = ({
+  title,
+  buttonTitle,
+  actionFunction,
+  selectedWarehouse,
+}) => {
   /* Variables */
   const { warehouseID } = useParams(); // Grabs current ID from URL
+  const {
+    warehouse_name,
+    address,
+    city,
+    country,
+    contact_name,
+    contact_position,
+    contact_phone,
+    contact_email,
+  } = selectedWarehouse;
 
   /* useStates Variables */
-  const [WarehouseName, setWarehouseName] = useState("");
-  const [StreetAddress, setStreetAddress] = useState("");
-  const [City, setCity] = useState("");
-  const [Country, setCountry] = useState("");
-  const [ContactName, setWareContactName] = useState("");
-  const [Position, setPosition] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState("");
-  const [Email, setEmail] = useState("");
+  const [WarehouseName, setWarehouseName] = useState(warehouse_name);
+  const [StreetAddress, setStreetAddress] = useState(address);
+  const [City, setCity] = useState(city);
+  const [Country, setCountry] = useState(country);
+  const [ContactName, setWareContactName] = useState(contact_name);
+  const [Position, setPosition] = useState(contact_position);
+  const [PhoneNumber, setPhoneNumber] = useState(contact_phone);
+  const [Email, setEmail] = useState(contact_email);
   const [WarehouseNameSubmit, setWarehouseNameSubmit] = useState(true);
   const [StreetAddressSubmit, setStreetAddressSubmit] = useState(true);
   const [CitySubmit, setCitySubmit] = useState(true);
@@ -247,11 +262,13 @@ const WarehouseDetails = ({ title, buttonTitle, actionFunction }) => {
   return (
     <div className="WarehouseDetails">
       <div className="WarehouseDetails__header-container">
-        <img
-          src={backArrow}
-          alt="back arrow"
-          className="WarehouseDetails__img"
-        />
+        <Link to={`/warehouses`} className="WarehouseDetails__link">
+          <img
+            src={backArrow}
+            alt="back arrow"
+            className="WarehouseDetails__img"
+          />
+        </Link>
         <h1 className="WarehouseDetails__header">{title}</h1>
       </div>
       <form className="WarehouseDetails__form" onSubmit={handleSubmit}>

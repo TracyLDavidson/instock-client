@@ -8,9 +8,9 @@ import React from "react";
 
 const PopupInvalid = (props) => {
   return props.trigger ? (
-    <div className="popup">
-      <img src={errorIcon} alt="Error Icon" className="popup__img" />
-      <p className="popup__message">This field is required</p>
+    <div className="PopupInvalid">
+      <img src={errorIcon} alt="Error Icon" className="PopupInvalid__img" />
+      <p className="PopupInvalid__message">This field is required</p>
     </div>
   ) : (
     ""

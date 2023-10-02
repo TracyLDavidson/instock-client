@@ -40,10 +40,20 @@ const fetchSingleInventory = async (inventoryId) => {
   }
 };
 
+const deleteWarehouseId = async (warehouseID) => {
+  try {
+    const { data } = await axios.get(`${API_URL}/warehouses/${warehouseID}`);
+    return data;
+  } catch (error) {
+    console.log("Unable to delete this warehouse");
+  }
+};
+
 export {
   fetchAllWarehouses,
   fetchSingleWarehouse,
   fetchWarehouseInventory,
   fetchInventory,
   fetchSingleInventory,
+  deleteWarehouseId,
 };

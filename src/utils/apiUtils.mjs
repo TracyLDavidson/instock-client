@@ -1,8 +1,11 @@
 import axios from "axios";
 
-// const { REACT_APP_API_URL, REACT_APP_API_PORT } = process.env;
 const API_URL = "http://localhost";
 const API_PORT = "8080";
+
+const fetchSingleWarehouse = async (warehouseID) => {
+  return axios.get(`${API_URL}:${API_PORT}/warehouses/${warehouseID}`);
+};
 
 const postSingleWarehouse = async (
   warehouse_name,
@@ -49,4 +52,14 @@ const putSingleWarehouse = async (
   });
 };
 
-export { postSingleWarehouse, putSingleWarehouse };
+const deleteSingleWarehouse = async (warehouseID) => {
+  return axios.delete(`${API_URL}:${API_PORT}/warehouses/${warehouseID}`);
+};
+
+export {
+  fetchSingleWarehouse,
+  postSingleWarehouse,
+  putSingleWarehouse,
+  deleteSingleWarehouse,
+};
+
