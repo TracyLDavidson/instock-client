@@ -1,10 +1,4 @@
 @use "../../styles/partials/mixins" as *;
-// @use '../../styles/partials/variables' as *;
-
-// * {
-//     padding: 0;
-//     margin: 0;
-// }
 
 .edit-container {
   padding: 0 16px;
@@ -26,10 +20,8 @@
 
 .form {
   @include flex-col;
-
   @include tablet {
-    
-}
+  }
 }
 
 .form-flex {
@@ -49,6 +41,37 @@
 .input {
   margin: 0 0 1.6rem;
   padding: 0 0 0 1.6rem;
+
+  &:focus {
+    width: 100%; 
+    height: 100%; 
+    background: white; 
+    border-radius: 2rem; 
+    border: 1px solid $primary-color--tertiary;
+    }
+
+  &.error {
+    width: 100%; 
+    height: 100%; 
+    background: white; 
+    border-radius: 2rem; 
+    border: 1px solid $highlight-color--2;
+  }
+}
+
+.error-message {
+  margin: 0 0 1.6rem;
+  padding: 0 0 0 1.6rem;
+  color: $highlight-color--2; 
+  font-size: 1.2rem; 
+  font-family: "regular";
+  font-weight: 400; 
+  word-wrap: break-word;
+  background-image: url("../../assets/icons/error.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 24px;
+  padding-left: 28px;
 }
 
 .details {
@@ -68,7 +91,7 @@
     margin: 1.6rem 0 2.4rem;
 
     @include tablet {
-        margin: 0 0 2.4rem;
+      margin: 0 0 2.4rem;
     }
   }
 
@@ -115,7 +138,7 @@
     margin: 1.6rem 0 2.4rem;
 
     @include tablet {
-        margin: 0 0 2.4rem;
+      margin: 0 0 2.4rem;
     }
   }
 
@@ -134,11 +157,15 @@
     }
   }
 
-  .input-quantity {
+  &__quantity {
     @include flex-col;
-    // width:100%;
-    height: 36px;
-    @include input-style;
+    width: 100%;
+
+    .input-quantity {
+      @include flex-col;
+      height: 36px;
+      @include input-style;
+    }
   }
 
   .select-warehouse {
@@ -152,13 +179,13 @@
 }
 
 .select-item {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url('../../assets/icons/dropdown.svg'); /* Replace 'arrow.png' with your image URL */
-    background-repeat: no-repeat;
-    background-position: right center;
-    padding-right: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/icons/dropdown.svg");
+  background-position: right center;
+  padding-right: 10px;
 }
 
 .button-container {
@@ -175,23 +202,23 @@
     height: 36px;
 
     @include tablet {
-        width: auto;
-        padding: 0 1.6rem;
+      width: auto;
+      padding: 0 1.6rem;
     }
   }
 
   .btn-cancel {
     @include tablet {
-        order: 2;
+      order: 2;
     }
   }
 
   .btn-submit {
     color: $primary-color--light;
     background-color: $primary-color--tertiary;
+
     @include tablet {
-        order: 1;
+      order: 1;
     }
   }
 }
-

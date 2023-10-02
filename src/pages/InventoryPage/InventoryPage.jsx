@@ -93,8 +93,8 @@ export default function WarehouseInventoryPage() {
             <Search />
             <Link to="/inventory/add">
             <PrimaryButton>
-              <img src={editIconWhite} alt="An edit icon" />
-              Edit
+              {/* <img src={editIconWhite} alt="An edit icon" /> */}
+              + Add New Item
             </PrimaryButton>
             </Link>
           </PageHeader>

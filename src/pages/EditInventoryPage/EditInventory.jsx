@@ -47,32 +47,31 @@ export default function EditInventory({ mode }) {
   }, []);
 
   // fetch data from database    //// edit for add vs. edit
-  useEffect(() => { 
+  useEffect(() => {
     if (mode === "edit") {
       axios
-      .get(`${url}/inventory/${id}`)
-      .then((response) => {
-        console.log(response.data[0]);
-        const data = response.data[0];
-        setItemName(data.item_name);
-        setItemDescription(data.description);
-        setSelectedCategory(data.category);
-        setSelectedWarehouse(data.warehouse_id);
-        if (data.status === "In Stock") {
-          setStatus("In Stock");
-        } else if (data.status === "Out of Stock") {
-          setStatus("Out of Stock");
-        }
-        setQuantity(data.quantity);
-      })
-      .catch((error) => {
-        console.error("Error from EditInventory GET:", error);
-      });
+        .get(`${url}/inventory/${id}`)
+        .then((response) => {
+          console.log(response.data[0]);
+          const data = response.data[0];
+          setItemName(data.item_name);
+          setItemDescription(data.description);
+          setSelectedCategory(data.category);
+          setSelectedWarehouse(data.warehouse_id);
+          if (data.status === "In Stock") {
+            setStatus("In Stock");
+          } else if (data.status === "Out of Stock") {
+            setStatus("Out of Stock");
+          }
+          setQuantity(data.quantity);
+        })
+        .catch((error) => {
+          console.error("Error from EditInventory GET:", error);
+        });
     } else if (mode === "add") {
       setStatus("In Stock");
-      setQuantity(0);
+      setQuantity(1);
     }
-
   }, []);
 
   // Event Handlers
@@ -99,16 +98,16 @@ export default function EditInventory({ mode }) {
     let hasError = false;
 
     // Validate Item Name
-    if (itemName.trim().length < 2) {
-      setItemNameError("Item name must be at least 2 characters.");
+    if (itemName.trim().length < 1) {
+      setItemNameError("This field is required");
       hasError = true;
     } else {
       setItemNameError("");
     }
 
     // Validate Item Description
-    if (itemDescription.trim().length < 2) {
-      setItemDescriptionError("Item description must be at least 2 characters.");
+    if (itemDescription.trim().length < 1) {
+      setItemDescriptionError("This field is required");
       hasError = true;
     } else {
       setItemDescriptionError("");
@@ -131,62 +130,60 @@ export default function EditInventory({ mode }) {
     }
 
     // Validate Quantity and Status
-    if (quantity === 0) {
+    if (isNaN(quantity) || quantity <= 0) {
       setStatus("Out of Stock");
-      setQuantityError("");
-    } else if (quantity > 0) {
+      setQuantityError("Quantity must be a number greater than 0");
+      hasError = true;
+    } else {
       setStatus("In Stock");
       setQuantityError("");
-    } else {
-      setQuantityError("Quantity must be a positive integer.");
-      hasError = true;
     }
 
     return !hasError;
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(validateForm()) {
-    const updatedInventory = {
-      item_name: itemName,
-      description: itemDescription,
-      status: status,
-      quantity: parseInt(quantity, 10),
-      category: selectedCategory,
-      warehouse_id: selectedWarehouse,
-    };
+    if (validateForm()) {
+      const updatedInventory = {
+        item_name: itemName,
+        description: itemDescription,
+        status: status,
+        quantity: parseInt(quantity, 10),
+        category: selectedCategory,
+        warehouse_id: selectedWarehouse,
+      };
 
-    if (mode === "edit") {
-      axios
-      .post(`${url}/inventory/${id}/edit`, updatedInventory)
-      .then((response) => {
-        console.log("Item updated sucessfully:", response.data);
-      })
-      .catch((error) => {
-        console.error("error updating item:", error);
-      });
-    } else if ( mode === "add" ) {
-      axios
-        .post(`${url}/inventory/add`, itemData)
-        .then((response) => {
-          console.log("Successfully added item:", response.data);
-          history.push("/inventory");
-        })
-        .catch((error) => {
-          console.error("Error adding item:", error);
-        });
+      if (mode === "edit") {
+        axios
+          .post(`${url}/inventory/${id}/edit`, updatedInventory)
+          .then((response) => {
+            console.log("Item updated sucessfully:", response.data);
+          })
+          .catch((error) => {
+            console.error("error updating item:", error);
+          });
+      } else if (mode === "add") {
+        axios
+          .post(`${url}/inventory/add`, updatedInventory)
+          .then((response) => {
+            console.log("Successfully added item:", response.data);
+            history.push("/inventory/add");
+          })
+          .catch((error) => {
+            console.error("Error adding item:", error);
+          });
+      }
     }
-  }};
+  };
 
   const submitButton = (
     <button
-      className={`btn-style btn-submit ${mode === "add" ? "btn-submit--add" : ""}`}
+      className={`btn-style btn-submit`}
       type="submit"
     >
-      {mode === "add" ? "Add Item" : "Save"}
+      {mode === "add" ? "+ Add Item" : "Save"}
     </button>
   );
 
@@ -203,8 +200,8 @@ export default function EditInventory({ mode }) {
           <img className="title__img" />
           <img src={backArrow} alt="back arrow" className="title__img" />
           <h1 className="title__text">
-          {mode === "add" ? "Add Inventory Item" : "Edit Inventory Item"}
-            </h1>
+            {mode === "add" ? "Add Inventory Item" : "Edit Inventory Item"}
+          </h1>
         </div>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-flex">
@@ -218,7 +215,9 @@ export default function EditInventory({ mode }) {
                 onChange={handleItemNameChange}
                 className="input input-item"
               ></input>
-              {itemNameError && <div className="error-message">{itemNameError}</div>}
+              {itemNameError && (
+                <div className="error-message">{itemNameError}</div>
+              )}
               <label className="label">Description</label>
               <textarea
                 placeholder="Please enter a brief item description..."
@@ -227,6 +226,9 @@ export default function EditInventory({ mode }) {
                 onChange={handleItemDescriptionChange}
                 className="input input-description"
               ></textarea>
+              {itemDescriptionError && (
+                <div className="error-message">{itemDescriptionError}</div>
+              )}
               <label className="label" htmlFor="categorySelect">
                 Category
               </label>
@@ -244,6 +246,9 @@ export default function EditInventory({ mode }) {
                   </option>
                 ))}
               </select>
+              {selectedCategoryError && (
+                <div className="error-message">{selectedCategoryError}</div>
+              )}
             </div>
             <div className="availability">
               <h2 className="availability__title">Item Availability</h2>
@@ -278,16 +283,26 @@ export default function EditInventory({ mode }) {
                   </label>
                 </div>
               </div>
-              <label htmlFor="quantityInput" className="label label--quantity">
-                Quantity
-              </label>
-              <input
-                id="quantityInput"
-                name="quantityInput"
-                className="input input-quantity"
-                value={quantity}
-                onChange={handleQuantityChange}
-              ></input>
+              {status !== "Out of Stock" && (
+                <div className="availability__quantity">
+                  <label
+                    htmlFor="quantityInput"
+                    className="label label--quantity"
+                  >
+                    Quantity
+                  </label>
+                  <input
+                    id="quantityInput"
+                    name="quantityInput"
+                    className="input input-quantity"
+                    value={quantity}
+                    onChange={handleQuantityChange}
+                  ></input>
+                  {quantityError && (
+                    <div className="error-message">{quantityError}</div>
+                  )}
+                </div>
+              )}
               <label htmlFor="warehouseSelect" className="label">
                 Warehouse
               </label>
@@ -305,6 +320,9 @@ export default function EditInventory({ mode }) {
                   </option>
                 ))}
               </select>
+              {selectedWarehouseError && (
+                    <div className="error-message">{selectedWarehouseError}</div>
+                  )}
             </div>
           </div>
           <div className="button-container">
