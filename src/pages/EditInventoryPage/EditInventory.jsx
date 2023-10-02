@@ -213,7 +213,7 @@ export default function EditInventory({ mode }) {
                 name="item-name"
                 value={itemName}
                 onChange={handleItemNameChange}
-                className="input input-item"
+                className={`input input-item ${itemNameError ? 'error' : ''}`}
               ></input>
               {itemNameError && (
                 <div className="error-message">{itemNameError}</div>
@@ -224,7 +224,7 @@ export default function EditInventory({ mode }) {
                 name="item-description"
                 value={itemDescription}
                 onChange={handleItemDescriptionChange}
-                className="input input-description"
+                className={`input input-description ${itemDescriptionError ? 'error' : ''}`}
               ></textarea>
               {itemDescriptionError && (
                 <div className="error-message">{itemDescriptionError}</div>
@@ -237,7 +237,7 @@ export default function EditInventory({ mode }) {
                 name="categorySelect"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className="input select-item select-category"
+                className={`input select-item select-category ${selectedCategoryError ? 'error' : ''}`}
               >
                 <option value="">Please select</option>
                 {categories.map((category) => (

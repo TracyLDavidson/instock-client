@@ -100,7 +100,7 @@
 
 @mixin input-style {
   border-radius: 2rem;
-  border: 1px solid black;
+  border: 1px solid $secondary-color--light;
 }
 
 @mixin btn {
