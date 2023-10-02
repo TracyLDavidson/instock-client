@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchInventory } from "../../utils/api";
 import { Table } from "../../components/Table/Table";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
@@ -91,7 +91,9 @@ export default function WarehouseInventoryPage() {
         <Paper>
           <PageHeader title={"Inventory"} onNavigateBack={() => navigate("/")}>
             <Search />
+            <Link to="/inventory/add">
             <PrimaryButton>+ Add New Item</PrimaryButton>
+            </Link>
           </PageHeader>
 
           <Table
