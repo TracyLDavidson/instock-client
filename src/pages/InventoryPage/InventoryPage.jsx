@@ -114,7 +114,7 @@ export default function WarehouseInventoryPage() {
             )}
             onTableSort={setSortBy}
             sortBy={sortBy}
-            onRowClick={(row) => navigate(`/inventory/${row.id}/edit`)}
+            onRowClick={(row) => navigate(`/inventory/${row.id}/view`)}
           />
           {showDeleteModal && (
             <Popup
