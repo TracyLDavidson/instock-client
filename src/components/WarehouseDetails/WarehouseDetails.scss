@@ -35,8 +35,18 @@
     }
   }
 
+  &__link {
+    width: auto;
+    display: flex;
+    padding: 16px;
+    padding-right: 0;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
   &__img {
-    padding-left: 16px;
     @include tablet {
     }
     @include desktop {
