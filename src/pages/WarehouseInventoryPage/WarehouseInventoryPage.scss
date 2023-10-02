@@ -2,7 +2,14 @@
 @import "/src/styles/partials/variables";
 
 .warehouse_inventory_page {
-
+  .btn--primary {
+    p {
+      display: none;
+    }
+    @include tablet {
+      display: inline-block;
+    }
+  }
   @include tablet {
     padding: 0 1.6rem;
   }

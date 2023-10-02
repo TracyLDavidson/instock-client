@@ -92,7 +92,7 @@ export default function WarehouseInventoryPage() {
           <PageHeader title={"Inventory"} onNavigateBack={() => navigate("/")}>
             <Search />
             <Link to="/inventory/add">
-            <PrimaryButton>+ Add New Item</PrimaryButton>
+              <PrimaryButton>+ Add New Item</PrimaryButton>
             </Link>
           </PageHeader>
 
@@ -107,7 +107,7 @@ export default function WarehouseInventoryPage() {
             )}
             onTableSort={setSortBy}
             sortBy={sortBy}
-            onRowClick={(row) => navigate(`/inventory/${row.id}/edit`)}
+            onRowClick={(row) => navigate(`/inventory/${row.id}/view`)}
           />
         </Paper>
       </div>
