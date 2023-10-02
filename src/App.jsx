@@ -11,10 +11,13 @@ import EditInventory from "./pages/EditInventoryPage/EditInventory";
 import WarehouseEditAddPage from "./pages/WarehousesEditAddPage/WarehousesEditAddPage";
 import Footer from "./components/Footer/Footer";
 
+
 function App() {
   return (
     <BrowserRouter>
+      
       <Header />
+
       <Routes>
         <Route path="/" element={<Navigate to={`/warehouses`} />} />
         <Route path="/warehouses" element={<WarehousesPage />} />
