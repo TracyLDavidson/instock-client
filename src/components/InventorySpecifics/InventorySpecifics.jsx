@@ -1,67 +1,90 @@
 import "./InventorySpecifics.scss";
-import backArrow from "../../assets/icons/back-arrow.svg";
-import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { PageHeader } from "../PageHeader/PageHeader";
+import { fetchSingleInventory, fetchSingleWarehouse } from "../../utils/api";
+import { PrimaryButton } from "../PrimaryButton/PrimaryButton";
+import { Paper } from "../Paper/Paper";
+
+import editIconWhite from "../../assets/icons/edit-white.svg";
 
 export default function InventorySpecifics() {
-    const { inventoryId } = useParams();
-    const [inventoryData, setInventoryData] = useState({});
+  const navigate = useNavigate();
+  const { inventoryId } = useParams();
+  const [inventoryData, setInventoryData] = useState({});
+  const [warehouseDetails, setWarehouseDetails] = useState({});
 
+  useEffect(() => {
+    const effect = async () => {
+      try {
+        const res = await fetchSingleInventory(inventoryId);
+        const warehouseRes = await fetchSingleWarehouse(
+          res.data[0].warehouse_id
+        );
 
+        setInventoryData(res.data[0]);
+        setWarehouseDetails(warehouseRes.data[0]);
+      } catch (e) {
+        console.log("unable to fetch single inventory item", e);
+      }
+    };
+    effect();
+  }, [inventoryId]);
 
-    useEffect(() => {
-        axios
-          .get(`http://localhost:8080/inventory/${inventoryId}`)
-          .then((res) => {
-            setWarehouseData(res.data[0]);
-          })
-          .catch((error) => {
-            console.error("Error fetching the data", error);
-          });
-    }, [inventoryId]);
+  const statusClassName =
+    inventoryData.status === "In Stock" ? "chip chip--green" : "chip chip--red";
 
-
-
-    return(
-        <section className="inventory-details">
-            <div className="inventory-details__container">
-                <div className="inventory-details__description-container">
-                    <h4>ITEM DESCRIPTION:</h4>
-                    <P>{inventoryData.description}</P>
+  return (
+    <section className="inventory-details">
+      <div className="inventory-details__container">
+        {inventoryData.id && (
+          <Paper>
+            <PageHeader
+              title={inventoryData.item_name}
+              onNavigateBack={() => navigate("/inventory")}
+              pageActionsComponent={() => (
+                <PrimaryButton
+                  onClick={() =>
+                    navigate(`/inventory/${inventoryData.id}/edit`)
+                  }
+                >
+                  <img src={editIconWhite} alt="An edit icon" />
+                  <p>Edit</p>
+                </PrimaryButton>
+              )}
+            ></PageHeader>
+            <section className="inventory-details__section">
+              <div className="inventory-details__description-container">
+                <div className="inventory-details__description">
+                  <h4>ITEM DESCRIPTION:</h4>
+                  <p>{inventoryData.description}</p>
                 </div>
 
-                <div className="inventory-details__category-container">
-                    <h4>CATEGORY:</h4>
-                    <P>{inventoryData.category}</P>
+                <div className="inventory-details__description">
+                  <h4>CATEGORY:</h4>
+                  <p>{inventoryData.category}</p>
+                </div>
+              </div>
+              <div className="inventory-details__description-container">
+                <div className="inventory-details__description">
+                  <h4>STATUS:</h4>
+                  <p className={statusClassName}>{inventoryData.status}</p>
                 </div>
 
-                <div className="inventory-details__mid-container">
-                    <div className="inventory-details__status-container">
-                        <h4>STATUS:</h4>
-                        <P>{inventoryData.status}</P>
-                    </div>
-
-                    <div className="inventory-details__quantity-container">
-                        <h4>QUANTITY:</h4>
-                        <P>{inventoryData.quantity}</P>
-                    </div>
+                <div className="inventory-details__description">
+                  <h4>QUANTITY:</h4>
+                  <p>{inventoryData.quantity}</p>
                 </div>
 
-                <div className="inventory-details__warehouse-container">
-                    <h4>WAREHOUSE:</h4>
-                    <P>{inventoryData.warehouse_id}</P>
-
+                <div className="inventory-details__description">
+                  <h4>WAREHOUSE:</h4>
+                  <p>{warehouseDetails.warehouse_name}</p>
                 </div>
-            </div>
-
-
-        </section>
-
-
-    )
-
-
-
-
+              </div>
+            </section>
+          </Paper>
+        )}
+      </div>
+    </section>
+  );
 }

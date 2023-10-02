@@ -32,9 +32,18 @@ const fetchInventory = async () => {
   }
 };
 
+const fetchSingleInventory = async (inventoryId) => {
+  try {
+    return await axios.get(`${API_URL}/inventory/${inventoryId}`);
+  } catch (e) {
+    console.log("Unable to fetch inventory item");
+  }
+};
+
 export {
   fetchAllWarehouses,
   fetchSingleWarehouse,
   fetchWarehouseInventory,
   fetchInventory,
+  fetchSingleInventory,
 };

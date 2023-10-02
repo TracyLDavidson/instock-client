@@ -9,7 +9,7 @@ import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
 import editIconWhite from "../../assets/icons/edit-white.svg";
 
 import "./WarehouseInventoryPage.scss";
-// TITAN-10:
+
 import WarehouseSpecifics from "../../components/WarehouseSpecifics/WarehouseSpecifics";
 
 const allowableProperties = ["item_name", "category", "status", "quantity"];
@@ -114,7 +114,6 @@ export default function WarehouseInventoryPage() {
           ></PageHeader>
           <div className="warehouse_inventory_page__details-component">
             <WarehouseSpecifics />
-            {/* TITAN-10: Warehouse Details Component  */}
           </div>
           <Table
             headers={tableHeaders}
