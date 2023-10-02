@@ -6,7 +6,11 @@ export const TableTitleCell = ({ title, onClick }) => {
   return (
     <div className="table-title-cell">
       <p>{title}</p>
-      <img src={chevronLeft} alt="A left chevron" />
+      <img
+        className="table-title-cell__arrow"
+        src={chevronLeft}
+        alt="A left chevron"
+      />
     </div>
   );
 };
