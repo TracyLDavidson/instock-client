@@ -18,8 +18,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; // To be determined
-  bottom: 5rem; // To be determined
   @include tablet {
   }
   @include desktop {

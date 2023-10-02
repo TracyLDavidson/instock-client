@@ -103,16 +103,16 @@ export default function Warehouse() {
 
   /* Start of code */
   return (
-    <div className="warehouses_page">
-      {/* <div className="warehouses_page__container"> */}
-      {/* <Paper> */}
-      <WarehouseDetails
-        title={titleSwitch()}
-        buttonTitle={buttonSwitch()}
-        actionFunction={actionFunction()}
-      />
-      {/* </Paper> */}
-      {/* </div> */}
+    <div className="warehouses__edit-add-page">
+      <div className="warehouses__edit-add-page-container">
+        <Paper>
+          <WarehouseDetails
+            title={titleSwitch()}
+            buttonTitle={buttonSwitch()}
+            actionFunction={actionFunction()}
+          />
+        </Paper>
+      </div>
     </div>
   );
 }
