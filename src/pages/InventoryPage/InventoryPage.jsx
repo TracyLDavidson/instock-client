@@ -91,10 +91,7 @@ export default function WarehouseInventoryPage() {
         <Paper>
           <PageHeader title={"Inventory"} onNavigateBack={() => navigate("/")}>
             <Search />
-            <PrimaryButton>
-              <img src={editIconWhite} alt="An edit icon" />
-              Edit
-            </PrimaryButton>
+            <PrimaryButton>+ Add New Item</PrimaryButton>
           </PageHeader>
 
           <Table
