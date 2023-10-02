@@ -49,4 +49,8 @@ const putSingleWarehouse = async (
   });
 };
 
-export { postSingleWarehouse, putSingleWarehouse };
+const deleteSingleWarehouse = async (warehouseID) => {
+  return axios.delete(`${API_URL}:${API_PORT}/warehouses/${warehouseID}`);
+};
+
+export { postSingleWarehouse, putSingleWarehouse, deleteSingleWarehouse };

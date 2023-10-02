@@ -7,6 +7,8 @@ import { Paper } from "../../components/Paper/Paper";
 import { PageActions } from "../../components/PageActions/PageActions";
 import { Search } from "../../components/Search/Search";
 import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
+import Popup from "../../components/Popup/Popup";
+import deleteIcon from "../../assets/icons/delete.svg";
 
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import "./WarehousesPage.scss";
@@ -66,6 +68,7 @@ export default function WarehousesPage() {
   const [tableHeaders, setTableHeaders] = useState([]);
   const [tableRows, setTableRows] = useState([]);
   const [sourceRows, setSourceRows] = useState([]);
+  const [buttonPopup, setbuttonPopup] = useState(false);
 
   useEffect(() => {
     const effects = async () => {
@@ -108,6 +111,12 @@ export default function WarehousesPage() {
               navigate(`/warehouses/${row.id}`);
             }}
           />
+          <img src={deleteIcon} alt="" onClick={() => setbuttonPopup(true)} />
+          <Popup
+            trigger={buttonPopup}
+            setTrigger={setbuttonPopup}
+            id={1}
+          ></Popup>
         </Paper>
       </div>
     </div>
