@@ -114,6 +114,15 @@
   a:active {
     color: $primary-color--tertiary;
   }
+  &__arrow {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    .table-title-cell__arrow {
+      transform: translateX(4px);
+    }
+  }
   @include tablet {
     justify-content: start;
     gap: 0.8rem;
