@@ -103,12 +103,13 @@ export default function WarehouseInventoryPage() {
           <PageHeader
             title={warehouseDetails.warehouse_name}
             onNavigateBack={() => navigate("/")}
-          >
-            <PrimaryButton>
-              <img src={editIconWhite} alt="An edit icon" />
-              Edit
-            </PrimaryButton>
-          </PageHeader>
+            pageActionsComponent={() => (
+              <PrimaryButton>
+                <img src={editIconWhite} alt="An edit icon" />
+                <p>Edit</p>
+              </PrimaryButton>
+            )}
+          ></PageHeader>
           <div className="warehouse_inventory_page__details-component">
             <WarehouseSpecifics />
           </div>
