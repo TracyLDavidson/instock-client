@@ -6,9 +6,6 @@
   display: table;
   flex-direction: column;
   width: 100%;
-  @include tablet {
-    // min-width: 76.8rem;
-  }
 }
 
 .table-header {
