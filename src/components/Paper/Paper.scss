@@ -2,11 +2,11 @@
 
 .paper {
   width: 100%;
-  -webkit-box-shadow: 3px 3px 5px -3px rgba(173, 173, 173, 1);
-  -moz-box-shadow: 3px 3px 5px -3px rgba(173, 173, 173, 1);
-  box-shadow: 3px 3px 5px -3px rgba(173, 173, 173, 1);
-  border: 1px solid $secondary-color--dark;
-  border-radius: 8px;
+  -webkit-box-shadow: 0.3rem 0.3rem 0.5rem -0.3rem rgba(173, 173, 173, 1);
+  -moz-box-shadow: 0.3rem 0.3rem 0.5rem -0.3rem rgba(173, 173, 173, 1);
+  box-shadow: 0.3rem 0.3rem 0.5rem -0.3rem rgba(173, 173, 173, 1);
+  border: 0.1rem solid $secondary-color--dark;
+  border-radius: 0.8rem;
   overflow: hidden;
   width: 100%;
 }

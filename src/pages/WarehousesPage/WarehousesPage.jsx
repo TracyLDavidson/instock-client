@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchAllWarehouses } from "../../utils/api";
+import { deleteWarehouseId, fetchAllWarehouses } from "../../utils/api";
 import { Table } from "../../components/Table/Table";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { Paper } from "../../components/Paper/Paper";
@@ -8,9 +8,7 @@ import { PageActions } from "../../components/PageActions/PageActions";
 import { Search } from "../../components/Search/Search";
 import { PrimaryButton } from "../../components/PrimaryButton/PrimaryButton";
 import Popup from "../../components/Popup/Popup";
-import deleteIcon from "../../assets/icons/delete.svg";
 
-import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import "./WarehousesPage.scss";
 
 const allowableProperties = [
@@ -68,20 +66,21 @@ export default function WarehousesPage() {
   const [tableHeaders, setTableHeaders] = useState([]);
   const [tableRows, setTableRows] = useState([]);
   const [sourceRows, setSourceRows] = useState([]);
-  const [buttonPopup, setbuttonPopup] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedTableRow, setSelectedTableRow] = useState({});
 
+  const tableEffects = async () => {
+    const response = await fetchAllWarehouses();
+    if (response.data && response.data.length) {
+      const rows = formatWarehousesResponse(response.data);
+      const headers = generateTableHeaderLabels(rows);
+      setSourceRows(response.data);
+      setTableHeaders(headers);
+      setTableRows(rows);
+    }
+  };
   useEffect(() => {
-    const effects = async () => {
-      const response = await fetchAllWarehouses();
-      if (response.data && response.data.length) {
-        const rows = formatWarehousesResponse(response.data);
-        const headers = generateTableHeaderLabels(rows);
-        setSourceRows(response.data);
-        setTableHeaders(headers);
-        setTableRows(rows);
-      }
-    };
-    effects();
+    tableEffects();
   }, []);
 
   return (
@@ -101,6 +100,10 @@ export default function WarehousesPage() {
             actionsComponent={(row) => {
               return (
                 <PageActions
+                  onDelete={() => {
+                    setSelectedTableRow(row);
+                    setShowDeleteModal(true);
+                  }}
                   onEdit={() => navigate(`/warehouses/${row.id}/edit`)}
                 />
               );
@@ -111,12 +114,25 @@ export default function WarehousesPage() {
               navigate(`/warehouses/${row.id}`);
             }}
           />
-          <img src={deleteIcon} alt="" onClick={() => setbuttonPopup(true)} />
-          <Popup
-            trigger={buttonPopup}
-            setTrigger={setbuttonPopup}
-            id={39}
-          ></Popup>
+          {showDeleteModal && (
+            <Popup
+              onCancel={() => setShowDeleteModal(false)}
+              onConfirm={async () => {
+                try {
+                  await deleteWarehouseId(selectedTableRow.id);
+                  setShowDeleteModal(false);
+                  setSelectedTableRow({});
+                  await tableEffects();
+                } catch (e) {
+                  console.log(
+                    "there was an error trying to delete the warehouse"
+                  );
+                }
+              }}
+              confirmText={"Delete"}
+              cancelText={"Cancel"}
+            ></Popup>
+          )}
         </Paper>
       </div>
     </div>

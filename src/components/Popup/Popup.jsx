@@ -1,36 +1,18 @@
 import "../Popup/Popup.scss";
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { deleteSingleWarehouse } from "../../utils/apiUtils.mjs";
 import closeIcon from "../../assets/icons/close.svg";
 
-/*
-  Popup component 
-*/
-
-const Popup = (props) => {
-  const Navigate = useNavigate();
-
-  const deleteSingleWarehouseFunction = async (warehouseID) => {
-    // Function to delete data based on ID in URL page
-    try {
-      const { data } = await deleteSingleWarehouse(warehouseID);
-      Navigate("/");
-    } catch (error) {
-      alert("ERROR 404\nVideo not found... Redirecting to Home Page");
-      Navigate("/");
-    }
-  };
-
-  const deleteHandler = () => {
-    deleteSingleWarehouseFunction(props.id);
-  };
-
-  return props.trigger ? (
+const Popup = ({
+  confirmText = "",
+  cancelText = "",
+  onCancel = () => {},
+  onConfirm = () => {},
+}) => {
+  return (
     <div className="popup">
       <div className="popup__inner">
         <div className="popup__content">
-          <div className="popup__img-container">
+          <div className="popup__img-container" onClick={onCancel}>
             <img src={closeIcon} alt="close icon" className="popup__img" />
           </div>
           <h1>{`Delete Washington warehouse?`}</h1>
@@ -40,20 +22,15 @@ const Popup = (props) => {
           </p>
         </div>
         <div className="popup__button-container">
-          <button
-            className="popup__cancel-btn"
-            onClick={() => props.setTrigger(false)}
-          >
-            Cancel
+          <button className="popup__cancel-btn" onClick={onCancel}>
+            {cancelText}
           </button>
-          <button className="popup__action-btn" onClick={deleteHandler}>
-            Delete
+          <button className="popup__action-btn" onClick={onConfirm}>
+            {confirmText}
           </button>
         </div>
       </div>
     </div>
-  ) : (
-    ""
   );
 };
 
