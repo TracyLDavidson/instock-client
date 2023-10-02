@@ -49,6 +49,55 @@ const deleteWarehouseId = async (warehouseID) => {
   }
 };
 
+const postSingleWarehouse = async (
+  warehouse_name,
+  address,
+  city,
+  country,
+  contact_name,
+  contact_position,
+  contact_phone,
+  contact_email
+) => {
+  return axios.post(`${API_URL}/warehouses/add`, {
+    warehouse_name,
+    address,
+    city,
+    country,
+    contact_name,
+    contact_position,
+    contact_phone,
+    contact_email,
+  });
+};
+
+const putSingleWarehouse = async (
+  warehouseID,
+  warehouse_name,
+  address,
+  city,
+  country,
+  contact_name,
+  contact_position,
+  contact_phone,
+  contact_email
+) => {
+  return axios.put(`${API_URL}/warehouses/${warehouseID}/edit`, {
+    warehouse_name,
+    address,
+    city,
+    country,
+    contact_name,
+    contact_position,
+    contact_phone,
+    contact_email,
+  });
+};
+
+const deleteSingleWarehouse = async (warehouseID) => {
+  return axios.delete(`${API_URL}/warehouses/${warehouseID}`);
+};
+
 export {
   fetchAllWarehouses,
   fetchSingleWarehouse,
@@ -56,4 +105,7 @@ export {
   fetchInventory,
   fetchSingleInventory,
   deleteWarehouseId,
+  postSingleWarehouse,
+  putSingleWarehouse,
+  deleteSingleWarehouse,
 };
