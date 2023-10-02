@@ -73,7 +73,6 @@ export default function WarehousesPage() {
     const response = await fetchAllWarehouses();
     if (response.data && response.data.length) {
       const rows = formatWarehousesResponse(response.data);
-      console.log(rows);
       const headers = generateTableHeaderLabels(rows);
       setSourceRows(response.data);
       setTableHeaders(headers);
@@ -132,7 +131,9 @@ export default function WarehousesPage() {
               }}
               confirmText={"Delete"}
               cancelText={"Cancel"}
-              warehouseName={selectedTableRow.warehouse_name}
+              Name={selectedTableRow.warehouse_name}
+              bodyText={"from the list of warehouses"}
+              headerText={"warehouse"}
             ></Popup>
           )}
         </Paper>

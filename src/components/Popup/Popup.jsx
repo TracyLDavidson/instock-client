@@ -7,7 +7,9 @@ const Popup = ({
   cancelText = "",
   onCancel = () => {},
   onConfirm = () => {},
-  warehouseName,
+  Name,
+  bodyText,
+  headerText,
 }) => {
   return (
     <div className="popup">
@@ -16,10 +18,9 @@ const Popup = ({
           <div className="popup__img-container" onClick={onCancel}>
             <img src={closeIcon} alt="close icon" className="popup__img" />
           </div>
-          <h1 className="popup__header">{`Delete ${warehouseName} warehouse?`}</h1>
+          <h1 className="popup__header">{`Delete ${Name} ${headerText}?`}</h1>
           <p className="popup__description">
-            {`Please confirm that you'd like to delete the ${warehouseName} from the
-            list of warehouses. You won't be able to undo this action.`}
+            {`Please confirm that you'd like to delete the ${Name} ${bodyText}. You won't be able to undo this action.`}
           </p>
         </div>
         <div className="popup__button-container">
