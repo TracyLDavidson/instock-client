@@ -85,7 +85,7 @@ const WarehouseDetails = ({
   /* Validations */
   const isWarehouseNameValid = () => {
     // Warehouse Name Validation
-    if (WarehouseName === " " || WarehouseName === "") {
+    if (WarehouseName.trim() === "") {
       return false;
     }
     return true;
@@ -93,7 +93,7 @@ const WarehouseDetails = ({
 
   const isStreetAddressValid = () => {
     // Street Address Validation
-    if (StreetAddress === " " || StreetAddress === "") {
+    if (StreetAddress.trim() === "") {
       return false;
     }
     return true;
@@ -101,7 +101,7 @@ const WarehouseDetails = ({
 
   const isCityValid = () => {
     // City Validation
-    if (City === " " || City === "") {
+    if (City.trim() === "") {
       return false;
     }
     return true;
@@ -109,7 +109,7 @@ const WarehouseDetails = ({
 
   const isCountryValid = () => {
     // Country Validation
-    if (Country === " " || Country === "") {
+    if (Country.trim() === "") {
       return false;
     }
     return true;
@@ -117,7 +117,7 @@ const WarehouseDetails = ({
 
   const isContactNameValid = () => {
     // Contact Name Validation
-    if (ContactName === " " || ContactName === "") {
+    if (Position.trim() === "") {
       return false;
     }
     return true;
@@ -125,7 +125,7 @@ const WarehouseDetails = ({
 
   const isPositionValid = () => {
     // Position Validation
-    if (Position === " " || Position === "") {
+    if (Position.trim() === "") {
       return false;
     }
     return true;
@@ -134,8 +134,7 @@ const WarehouseDetails = ({
   const isPhoneNumberValid = () => {
     // Phone Number Validation
     if (
-      PhoneNumber === " " ||
-      PhoneNumber === "" ||
+      PhoneNumber.trim() === "" ||
       !PhoneNumber.includes("(") ||
       !PhoneNumber.includes(")") ||
       !PhoneNumber.includes("+")
@@ -147,12 +146,7 @@ const WarehouseDetails = ({
 
   const isEmailValid = () => {
     // Email Validation
-    if (
-      Email === "" ||
-      Email === "" ||
-      !Email.includes("@") ||
-      !Email.includes(".")
-    ) {
+    if (Email.trim() === "" || !Email.includes("@") || !Email.includes(".")) {
       return false;
     }
     return true;
