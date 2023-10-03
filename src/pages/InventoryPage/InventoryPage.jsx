@@ -90,7 +90,7 @@ export default function WarehouseInventoryPage() {
     <div className="inventory_page">
       <div className="inventory_page__container">
         <Paper>
-          <PageHeader title={"Inventory"} onNavigateBack={() => navigate("/")}>
+          <PageHeader title={"Inventory"}>
             <Search />
             <PrimaryButton onClick={() => navigate("/inventory/add")}>
               + Add New Item

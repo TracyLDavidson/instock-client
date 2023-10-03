@@ -1,8 +1,13 @@
 import "./Header.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "./InStock-Logo.svg";
 
 export default function Header() {
+  const location = useLocation();
+
+  const isWarehousesPage = location.pathname.includes('/warehouses');
+  const isInventoryPage = location.pathname.includes('/inventory');
+
   return (
     <div className="header__allcontainer">
       <div className="header__container">
@@ -14,7 +19,7 @@ export default function Header() {
           <div className="header__buttoncontainer">
             <Link
               to="/warehouses"
-              className="header__buttoncontainer--warehouses"
+              className={`header__buttoncontainer--warehouses ${isWarehousesPage ? 'active' : ''}`}
             >
               Warehouses
             </Link>
@@ -23,7 +28,7 @@ export default function Header() {
             <Link
               to="/inventory"
             //   type="button"
-              className="header__buttoncontainer--inventory"
+              className={`header__buttoncontainer--inventory ${isInventoryPage ? 'active' : ''}`}
             >
               Inventory
             </Link>
