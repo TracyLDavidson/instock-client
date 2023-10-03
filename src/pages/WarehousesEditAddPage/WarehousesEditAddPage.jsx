@@ -82,7 +82,6 @@ export default function Warehouse() {
         );
         // console.log(data);
       } catch (err) {
-        alert("ERROR 404\nVideo not found... Redirecting to Home Page");
         Navigate("/");
       }
     };
