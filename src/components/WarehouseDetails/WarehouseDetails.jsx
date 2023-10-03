@@ -188,7 +188,9 @@ const WarehouseDetails = ({
     setPositionSubmit(true);
     setPhoneNumberSubmit(true);
     setEmailSubmit(true);
-    navigate(`/warehouses/${warehouseID}`);
+    warehouseID
+      ? navigate(`/warehouses/${warehouseID}`)
+      : navigate("/warehouses ");
   };
 
   const handleSubmit = async (e) => {

@@ -80,7 +80,7 @@ export default function Warehouse() {
           phoneNumber,
           email
         );
-        // console.log(data);
+       
       } catch (err) {
         Navigate("/");
       }
