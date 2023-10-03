@@ -92,7 +92,7 @@
   width: 100%;
   padding: 0 1.6rem;
   @include desktop {
-    padding: 0 1.6rem;
+    padding: 0;
     margin: 0 auto;
     max-width: 1020px;
   }
@@ -120,6 +120,7 @@
     width: max-content;
   }
 }
+
 
 @mixin chip {
   padding: 4px 8px;
