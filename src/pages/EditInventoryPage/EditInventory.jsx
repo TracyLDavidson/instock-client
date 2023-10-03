@@ -1,11 +1,12 @@
 import "./EditInventory.scss";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import backArrow from "../../assets/icons/back-arrow.svg";
 import { Paper } from "../../components/Paper/Paper";
 
 export default function EditInventory({ mode }) {
+  const navigate = useNavigate();
   const [itemName, setItemName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [status, setStatus] = useState("");
@@ -157,19 +158,20 @@ export default function EditInventory({ mode }) {
 
       if (mode === "edit") {
         axios
-          .post(`${url}/inventory/${id}/edit`, updatedInventory)
+          .put(`${url}/inventory/${id}`, updatedInventory)
           .then((response) => {
-            console.log("Item updated sucessfully:", response.data);
+            console.log("Item updated successfully:", response.data);
+            navigate("/inventory");
           })
           .catch((error) => {
             console.error("error updating item:", error);
           });
       } else if (mode === "add") {
         axios
-          .post(`${url}/inventory/add`, updatedInventory)
+          .post(`${url}/inventory`, updatedInventory)
           .then((response) => {
             console.log("Successfully added item:", response.data);
-            history.push("/inventory/add");
+            navigate("/inventory");
           })
           .catch((error) => {
             console.error("Error adding item:", error);
@@ -179,10 +181,7 @@ export default function EditInventory({ mode }) {
   };
 
   const submitButton = (
-    <button
-      className={`btn-style btn-submit`}
-      type="submit"
-    >
+    <button className={`btn-style btn-submit`} type="submit">
       {mode === "add" ? "+ Add Item" : "Save"}
     </button>
   );
@@ -212,7 +211,7 @@ export default function EditInventory({ mode }) {
                 name="item-name"
                 value={itemName}
                 onChange={handleItemNameChange}
-                className={`input input-item ${itemNameError ? 'error' : ''}`}
+                className={`input input-item ${itemNameError ? "error" : ""}`}
               ></input>
               {itemNameError && (
                 <div className="error-message">{itemNameError}</div>
@@ -223,7 +222,9 @@ export default function EditInventory({ mode }) {
                 name="item-description"
                 value={itemDescription}
                 onChange={handleItemDescriptionChange}
-                className={`input input-description ${itemDescriptionError ? 'error' : ''}`}
+                className={`input input-description ${
+                  itemDescriptionError ? "error" : ""
+                }`}
               ></textarea>
               {itemDescriptionError && (
                 <div className="error-message">{itemDescriptionError}</div>
@@ -236,7 +237,9 @@ export default function EditInventory({ mode }) {
                 name="categorySelect"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className={`input select-item select-category ${selectedCategoryError ? 'error' : ''}`}
+                className={`input select-item select-category ${
+                  selectedCategoryError ? "error" : ""
+                }`}
               >
                 <option value="">Please select</option>
                 {categories.map((category) => (
@@ -293,7 +296,9 @@ export default function EditInventory({ mode }) {
                   <input
                     id="quantityInput"
                     name="quantityInput"
-                    className={`input input-quantity ${quantityError ? 'error' : ''}`}
+                    className={`input input-quantity ${
+                      quantityError ? "error" : ""
+                    }`}
                     value={quantity}
                     onChange={handleQuantityChange}
                   ></input>
@@ -310,7 +315,9 @@ export default function EditInventory({ mode }) {
                 name="warehouseSelect"
                 value={selectedWarehouse}
                 onChange={handleWarehouseChange}
-                className={`input select-item select-warehouse ${quantityError ? 'error' : ''}`}
+                className={`input select-item select-warehouse ${
+                  quantityError ? "error" : ""
+                }`}
               >
                 <option value="">Please select</option>
                 {warehouses.map((warehouse) => (
@@ -320,8 +327,8 @@ export default function EditInventory({ mode }) {
                 ))}
               </select>
               {selectedWarehouseError && (
-                    <div className="error-message">{selectedWarehouseError}</div>
-                  )}
+                <div className="error-message">{selectedWarehouseError}</div>
+              )}
             </div>
           </div>
           <div className="button-container">

@@ -7,7 +7,9 @@
       display: none;
     }
     @include tablet {
-      display: inline-block;
+      p {
+        display: inline-block;
+      }
     }
   }
   @include tablet {

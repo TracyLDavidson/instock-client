@@ -18,6 +18,7 @@ const WarehouseDetails = ({
 }) => {
   /* Variables */
   const { warehouseID } = useParams(); // Grabs current ID from URL
+  const navigate = useNavigate();
   const {
     warehouse_name,
     address,
@@ -184,7 +185,7 @@ const WarehouseDetails = ({
     setEmailSubmit(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     // Handle Submit Form
     e.preventDefault();
     if (!isWarehouseNameValid()) {
@@ -236,9 +237,8 @@ const WarehouseDetails = ({
     }
 
     if (isFormValid()) {
-      alert("Form Submitted");
       // Do an update and post request on backend side here
-      actionFunction(
+      await actionFunction(
         WarehouseName,
         StreetAddress,
         City,
@@ -248,6 +248,7 @@ const WarehouseDetails = ({
         PhoneNumber,
         Email
       );
+      navigate("/");
     }
   };
 
