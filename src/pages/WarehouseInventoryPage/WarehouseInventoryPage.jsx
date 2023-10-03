@@ -104,7 +104,11 @@ export default function WarehouseInventoryPage() {
             title={warehouseDetails.warehouse_name}
             onNavigateBack={() => navigate("/")}
             pageActionsComponent={() => (
-              <PrimaryButton>
+              <PrimaryButton
+                onClick={() =>
+                  navigate(`/warehouses/${warehouseDetails.id}/edit`)
+                }
+              >
                 <img src={editIconWhite} alt="An edit icon" />
                 <p>Edit</p>
               </PrimaryButton>

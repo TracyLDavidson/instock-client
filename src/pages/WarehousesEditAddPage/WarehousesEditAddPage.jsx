@@ -22,10 +22,8 @@ export default function Warehouse() {
     // Function to fetch data based on ID in URL page
     try {
       const { data } = await fetchSingleWarehouse(warehouseID);
-      // console.log(data);
       setSelectedWarehouse(data[0]);
     } catch (error) {
-      alert("ERROR 404\nVideo not found... Redirecting to Home Page");
       Navigate("/");
     }
   };
@@ -53,9 +51,7 @@ export default function Warehouse() {
           phoneNumber,
           email
         );
-        // console.log(data);
       } catch (err) {
-        alert("ERROR 404\nVideo not found... Redirecting to Home Page");
         Navigate("/");
       }
     };

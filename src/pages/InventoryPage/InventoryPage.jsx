@@ -69,24 +69,21 @@ export default function WarehouseInventoryPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedTableRow, setSelectedTableRow] = useState({});
 
-  // const handleRowId = (id) => {
-  //   navigate(`/inventory/${id}/edit`);
-  // }
+  const tableEffect = async () => {
+    try {
+      const inventoryRes = await fetchInventory();
+      if (inventoryRes.data) {
+        const rows = formatResponse(inventoryRes.data);
+        const headers = generateTableHeaderLabels(rows);
+        setTableHeaders(headers);
+        setTableRows(rows);
+        setSourceRows(inventoryRes.data);
+      }
+    } catch (e) {}
+  };
 
   useEffect(() => {
-    const effects = async () => {
-      try {
-        const inventoryRes = await fetchInventory();
-        if (inventoryRes.data) {
-          const rows = formatResponse(inventoryRes.data);
-          const headers = generateTableHeaderLabels(rows);
-          setTableHeaders(headers);
-          setTableRows(rows);
-          setSourceRows(inventoryRes.data);
-        }
-      } catch (e) {}
-    };
-    effects();
+    tableEffect();
   }, []);
 
   return (
@@ -95,9 +92,9 @@ export default function WarehouseInventoryPage() {
         <Paper>
           <PageHeader title={"Inventory"} onNavigateBack={() => navigate("/")}>
             <Search />
-            <Link to="/inventory/add">
-              <PrimaryButton>+ Add New Item</PrimaryButton>
-            </Link>
+            <PrimaryButton onClick={() => navigate("/inventory/add")}>
+              + Add New Item
+            </PrimaryButton>
           </PageHeader>
 
           <Table
@@ -115,7 +112,7 @@ export default function WarehouseInventoryPage() {
             )}
             onTableSort={setSortBy}
             sortBy={sortBy}
-            onRowClick={(row) => navigate(`/inventory/${row.id}/edit`)}
+            onRowClick={(row) => navigate(`/inventory/${row.id}/view`)}
           />
           {showDeleteModal && (
             <Popup
@@ -123,6 +120,7 @@ export default function WarehouseInventoryPage() {
               onConfirm={async () => {
                 try {
                   await deleteInventoryId(selectedTableRow.id);
+                  await tableEffect();
                   setShowDeleteModal(false);
                   setSelectedTableRow({});
                   await effects();
