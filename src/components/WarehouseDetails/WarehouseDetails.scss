@@ -1,0 +1,230 @@
+// @use "../../styles/partials//variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+/*
+    Warehouse Details CSS Properties
+*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.WarehouseDetails {
+  background-color: $background-color--white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include tablet {
+  }
+  @include desktop {
+    max-width: 1280px;
+  }
+
+  &__header-container {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid $secondary-color--light;
+    @include tablet {
+    }
+    @include desktop {
+      // max-width: 1280px;
+    }
+  }
+
+  &__link {
+    width: auto;
+    display: flex;
+    padding: 16px;
+    padding-right: 0;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__img {
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__header {
+    padding: 16px;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: column;
+    }
+    @include desktop {
+      // max-width: 1280px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      padding: 16px 0;
+    }
+    @include desktop {
+    }
+  }
+
+  &__sub-container {
+    width: 100%;
+    padding: 8px 16px;
+    @include tablet {
+      padding: 0 16px;
+    }
+    @include desktop {
+    }
+
+    &--borderline {
+      border-top: 1px solid $secondary-color--light;
+      @include tablet {
+        border-top: 0;
+        border-left: 1px solid $secondary-color--light;
+      }
+      @include desktop {
+      }
+    }
+  }
+
+  &__sub-header {
+    padding: 8px 0;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__buttons-container {
+    background-color: $background-color--light;
+    width: 100%;
+    display: flex;
+    padding: 16px;
+    @include tablet {
+      justify-content: flex-end;
+    }
+    @include desktop {
+    }
+  }
+
+  &__cancel-btn {
+    color: $secondary-color--dark;
+    background-color: $primary-color--light;
+    border: 1px solid $secondary-color--light;
+    border-radius: 20px;
+    width: 100%;
+    height: 36px;
+    margin-right: 16px;
+    padding: 0 16px;
+    @include tablet {
+      height: 38px;
+      width: auto;
+    }
+    @include desktop {
+    }
+  }
+
+  &__action-btn {
+    color: $primary-color--light;
+    background-color: $primary-color--tertiary;
+    border: 1px solid $secondary-color--light;
+    border-radius: 20px;
+    width: 100%;
+    height: 36px;
+    padding: 0 16px;
+    @include tablet {
+      height: 38px;
+      width: auto;
+    }
+    @include desktop {
+    }
+  }
+}
+
+.textbox .textbox__warehouse-name--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__warehouse-name--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__street-address--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__street-address--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__city--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__city--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__country--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__country--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__contact-name--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__contact-name--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__position--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__position--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__phone-number--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__phone-number--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}
+
+.textbox .textbox__email--error {
+  border: 1px solid $highlight-color--2;
+}
+
+.textbox .textbox__email--active {
+  color: $primary-color--dark;
+  border: 1px solid $primary-color--tertiary;
+}

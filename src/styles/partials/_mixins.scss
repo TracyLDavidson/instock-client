@@ -1,0 +1,131 @@
+@import "./variables.scss";
+@import "./breakpoints";
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin page-header {
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+  font-family: "semi-bold";
+
+  @include tablet {
+    font-size: 3.2rem;
+    line-height: 4rem;
+  }
+}
+
+@mixin subheader {
+  font-size: 2rem;
+  line-height: 2.8rem;
+  font-family: "semi-bold";
+
+  @include tablet {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
+}
+
+@mixin LabelsLinksAndButtons {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-family: "regular";
+  @include tablet {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+
+@mixin table-header {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  font-family: "regular";
+  color: $secondary-color--dark;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 8px 0;
+
+  @include tablet {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin body-lrg {
+  font-size: 1.5rem;
+  line-height: 2.6rem;
+  font-family: "regular";
+  @include tablet {
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+  }
+}
+
+@mixin body-med {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-family: "regular";
+  @include tablet {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+
+@mixin body-sm {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  font-family: "regular";
+  @include tablet {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  padding: 0 1.6rem;
+  @include desktop {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1020px;
+  }
+}
+
+@mixin input-style {
+  border-radius: 2rem;
+  border: 1px solid $secondary-color--light;
+}
+
+@mixin btn {
+  white-space: nowrap;
+  padding: 8px 8px;
+  border-radius: 25px;
+  width: 100%;
+  min-width: 40px;
+  text-align: center;
+  &:hover {
+    opacity: 0.5;
+  }
+  @include tablet {
+    min-width: 80px;
+    margin: 0;
+    padding: 8px 16px;
+    width: max-content;
+  }
+}
+
+
+@mixin chip {
+  padding: 4px 8px;
+  border-radius: 25px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+}

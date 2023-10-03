@@ -1,0 +1,30 @@
+// @use "../../styles/partials/breakpoints" as *;
+// @use "../../styles/partials//variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+/* 
+  Popup Description Properties 
+*/
+
+.PopupInvalid {
+  display: flex;
+  @include tablet {
+  }
+  @include desktop {
+  }
+
+  &__img {
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__message {
+    color: $highlight-color--2;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+}

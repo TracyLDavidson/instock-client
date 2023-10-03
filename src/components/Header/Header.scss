@@ -1,0 +1,115 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  font-family: regular;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+
+  @include tablet {
+    padding: 3.2rem 0 0 0;
+    padding-left: 3.2rem;
+  }
+
+  &__logocontainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+
+    @include tablet {
+      justify-content: flex-start;
+    }
+  }
+
+  &__allcontainer {
+    background-color: #232940;
+    height: 20rem;
+    width: 100%;
+
+    @include tablet {
+      padding: 3.2rem 0 0 0;
+    }
+  }
+
+  &__container {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 0 3.2rem 0 3.2rem;
+      align-items: center;
+
+      @include desktop {
+        width: 1080px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__twobuttonscontainer {
+    @include flex-row;
+
+    @include tablet {
+      gap: 2rem;
+    }
+  }
+
+  &__buttoncontainer {
+    @include flex-row;
+    justify-content: center;
+    width: calc(100% - 3.2rem);
+    gap: 1.6rem;
+
+    &--warehouses {
+      background-color: #232940;
+      border-radius: 2rem;
+      color: #ffffff;
+      border: none;
+
+      margin: 0 0.8rem 0 1.6rem;
+      text-decoration: none;
+      text-align: center;
+      justify-content: center;
+      padding: 0.8rem 0rem;
+
+      @include tablet {
+        margin: 0;
+        padding: 0.8rem 1.6rem;
+      }
+
+      &:hover {
+        background-color: #13182c;
+      }
+    }
+    &--inventory {
+      background-color: #232940;
+      border-radius: 2rem;
+      color: #ffffff;
+      border: none;
+
+      margin: 0 1.6rem 0 0.8rem;
+      text-decoration: none;
+      text-align: center;
+      justify-content: center;
+      padding: 0.8rem 0rem;
+
+      @include tablet {
+        margin: 0;
+        padding: 0.8rem 1.6rem;
+      }
+
+      &:hover {
+        background-color: #13182c;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: #13182c;
+  font-weight: 500;
+  padding: 0.8rem 1.6rem;
+}

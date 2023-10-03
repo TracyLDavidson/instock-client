@@ -1,0 +1,66 @@
+// @use "../../styles/partials/breakpoints" as *;
+// @use "../../styles/partials//variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+/* 
+  Textbox CSS Properties 
+*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.textbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: normal;
+  padding: 8px 0;
+  @include tablet {
+  }
+  @include desktop {
+    max-width: 1020px;
+  }
+
+  &__label {
+    color: black;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: normal;
+    padding-top: 4px;
+    @include tablet {
+    }
+    @include desktop {
+    }
+  }
+
+  &__text {
+    background-color: white;
+    color: $secondary-color--dark;
+    border: 1px solid $secondary-color--light;
+    border-radius: 20px;
+    width: 100%;
+    height: 36px;
+    padding: 0 16px;
+    @include tablet {
+      height: 38px;
+    }
+    @include desktop {
+    }
+
+    // &--error {
+    //   border: 1px solid #d22d2d;
+    //   border-radius: 20px;
+    // }
+  }
+}

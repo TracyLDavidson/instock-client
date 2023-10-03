@@ -1,0 +1,75 @@
+@import "/src/styles/partials/mixins";
+@import "/src/styles/partials/variables";
+
+.inventory-details {
+  @include container;
+
+  .paper {
+    margin-top: -85px;
+  }
+
+  .btn--primary {
+    p {
+      display: none;
+      @include tablet {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    @include tablet {
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &__description-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 0 16px 0 16px;
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 32px 0;
+      &:first-of-type {
+        border-right: 2px solid $secondary-color--light;
+      }
+      width: 50%;
+      padding: 16px;
+    }
+
+    &:last-child {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    &:first-child {
+      margin-top: 16px;
+    }
+  }
+
+  &__description {
+    max-width: 300px;
+    padding-bottom: 24px;
+
+    @include tablet {
+      width: 100%;
+      padding: 0 16px;
+      padding-bottom: 24px;
+    }
+  }
+
+  &__description-container:nth-child(2) > &__description:nth-of-type(1),
+  &__description-container:nth-child(2) > &__description:nth-of-type(2) {
+    width: 50%;
+    @include tablet {
+      width: 50%;
+    }
+  }
+}

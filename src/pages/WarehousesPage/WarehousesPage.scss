@@ -1,0 +1,27 @@
+@import "/src/styles/partials/mixins";
+
+.warehouses_page {
+  // padding: 0 16px;
+
+  @include tablet {
+    padding: 0 1.6rem;
+
+    @include desktop {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: center;
+  }
+  .paper {
+    margin-top: -85px;
+  }
+  .table {
+    background-color: $background-color--white;
+  }
+}

@@ -1,0 +1,34 @@
+@import "/src/styles/partials/mixins";
+@import "/src/styles/partials/variables";
+
+.warehouse_inventory_page {
+  .btn--primary {
+    p {
+      display: none;
+    }
+    @include tablet {
+      p {
+        display: inline-block;
+      }
+    }
+  }
+  @include tablet {
+    padding: 0 1.6rem;
+  }
+
+  @include desktop {
+    padding: 0;
+  }
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: center;
+  }
+  .paper {
+    margin-top: -85px;
+  }
+  .table {
+    background-color: $background-color--white;
+  }
+}
