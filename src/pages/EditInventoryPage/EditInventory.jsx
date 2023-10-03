@@ -24,7 +24,6 @@ export default function EditInventory({ mode }) {
   const url = `http://localhost:8080`;
 
   useEffect(() => {
-    console.log("id is:", id);
     axios
       .get(`${url}/categories`)
       .then((response) => {
@@ -53,7 +52,6 @@ export default function EditInventory({ mode }) {
       axios
         .get(`${url}/inventory/${id}`)
         .then((response) => {
-          console.log(response.data[0]);
           const data = response.data[0];
           setItemName(data.item_name);
           setItemDescription(data.description);
@@ -160,8 +158,7 @@ export default function EditInventory({ mode }) {
         axios
           .put(`${url}/inventory/${id}`, updatedInventory)
           .then((response) => {
-            console.log("Item updated successfully:", response.data);
-            navigate("/inventory");
+            navigate(`/inventory/${id}/view`);
           })
           .catch((error) => {
             console.error("error updating item:", error);
@@ -170,7 +167,6 @@ export default function EditInventory({ mode }) {
         axios
           .post(`${url}/inventory`, updatedInventory)
           .then((response) => {
-            console.log("Successfully added item:", response.data);
             navigate("/inventory");
           })
           .catch((error) => {
@@ -190,7 +186,11 @@ export default function EditInventory({ mode }) {
     <button
       className="btn-style btn-cancel"
       type="button"
-      onClick={() => navigate(`/inventory/${id}/view`)}
+      onClick={() =>
+        mode === "add"
+          ? navigate("/inventory")
+          : navigate(`/inventory/${id}/view`)
+      }
     >
       Cancel
     </button>
@@ -204,7 +204,11 @@ export default function EditInventory({ mode }) {
             src={backArrow}
             alt="back arrow"
             className="title__img"
-            onClick={() => navigate(`/inventory/${id}/view`)}
+            onClick={() =>
+              mode === "add"
+                ? navigate("/inventory")
+                : navigate(`/inventory/${id}/view`)
+            }
           />
           <h1 className="title__text">
             {mode === "add" ? "Add Inventory Item" : "Edit Inventory Item"}
