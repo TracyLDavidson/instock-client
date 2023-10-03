@@ -194,6 +194,7 @@ const WarehouseDetails = ({
     setPositionSubmit(true);
     setPhoneNumberSubmit(true);
     setEmailSubmit(true);
+    navigate(`/warehouses/${warehouseID}`);
   };
 
   const handleSubmit = async (e) => {
@@ -259,7 +260,7 @@ const WarehouseDetails = ({
         PhoneNumber,
         Email
       );
-      navigate("/");
+      navigate(`/warehouses/${warehouseID}`);
     }
   };
 
