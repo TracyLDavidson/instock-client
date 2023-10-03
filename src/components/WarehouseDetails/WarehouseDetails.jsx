@@ -85,7 +85,7 @@ const WarehouseDetails = ({
   /* Validations */
   const isWarehouseNameValid = () => {
     // Warehouse Name Validation
-    if (WarehouseName.length < 1) {
+    if (WarehouseName === " " || WarehouseName === "") {
       return false;
     }
     return true;
@@ -93,7 +93,7 @@ const WarehouseDetails = ({
 
   const isStreetAddressValid = () => {
     // Street Address Validation
-    if (StreetAddress.length < 1) {
+    if (StreetAddress === " " || StreetAddress === "") {
       return false;
     }
     return true;
@@ -101,7 +101,7 @@ const WarehouseDetails = ({
 
   const isCityValid = () => {
     // City Validation
-    if (City.length < 1) {
+    if (City === " " || City === "") {
       return false;
     }
     return true;
@@ -109,7 +109,7 @@ const WarehouseDetails = ({
 
   const isCountryValid = () => {
     // Country Validation
-    if (Country.length < 1) {
+    if (Country === " " || Country === "") {
       return false;
     }
     return true;
@@ -117,7 +117,7 @@ const WarehouseDetails = ({
 
   const isContactNameValid = () => {
     // Contact Name Validation
-    if (ContactName.length < 1) {
+    if (ContactName === " " || ContactName === "") {
       return false;
     }
     return true;
@@ -125,7 +125,7 @@ const WarehouseDetails = ({
 
   const isPositionValid = () => {
     // Position Validation
-    if (Position.length < 1) {
+    if (Position === " " || Position === "") {
       return false;
     }
     return true;
@@ -133,7 +133,13 @@ const WarehouseDetails = ({
 
   const isPhoneNumberValid = () => {
     // Phone Number Validation
-    if (PhoneNumber.length < 1) {
+    if (
+      PhoneNumber === " " ||
+      PhoneNumber === "" ||
+      !PhoneNumber.includes("(") ||
+      !PhoneNumber.includes(")") ||
+      !PhoneNumber.includes("+")
+    ) {
       return false;
     }
     return true;
@@ -141,7 +147,12 @@ const WarehouseDetails = ({
 
   const isEmailValid = () => {
     // Email Validation
-    if (Email.length < 1) {
+    if (
+      Email === "" ||
+      Email === "" ||
+      !Email.includes("@") ||
+      !Email.includes(".")
+    ) {
       return false;
     }
     return true;
