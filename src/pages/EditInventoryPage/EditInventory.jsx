@@ -187,7 +187,11 @@ export default function EditInventory({ mode }) {
   );
 
   const cancelButton = (
-    <button className="btn-style btn-cancel" type="button">
+    <button
+      className="btn-style btn-cancel"
+      type="button"
+      onClick={() => navigate(`/inventory/${id}/view`)}
+    >
       Cancel
     </button>
   );
@@ -196,7 +200,12 @@ export default function EditInventory({ mode }) {
     <div className="edit-container">
       <Paper>
         <div className="title">
-          <img src={backArrow} alt="back arrow" className="title__img" />
+          <img
+            src={backArrow}
+            alt="back arrow"
+            className="title__img"
+            onClick={() => navigate(`/inventory/${id}/view`)}
+          />
           <h1 className="title__text">
             {mode === "add" ? "Add Inventory Item" : "Edit Inventory Item"}
           </h1>

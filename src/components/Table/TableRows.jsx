@@ -10,19 +10,25 @@ export const TableRows = ({
   actionsComponent = () => <></>,
 }) => {
   const [sortedRows, setSortedRows] = useState(rows);
+  const [sources, setSources] = useState(sourceRows);
   useEffect(() => {
     const newSortedRows = [...rows];
+    const newSortedSources = [...sourceRows];
 
-    newSortedRows.sort((a, b) => {
-      if (a[sortBy] > b[sortBy]) {
-        return 1;
-      } else if (a[sortBy] < b[sortBy]) {
-        return -1;
-      }
-      return 0;
-    });
+    const sortTableRows = (rowData, updateState) => {
+      rowData.sort((a, b) => {
+        if (a[sortBy] > b[sortBy]) {
+          return 1;
+        } else if (a[sortBy] < b[sortBy]) {
+          return -1;
+        }
+        return 0;
+      });
+      updateState(rowData);
+    };
 
-    setSortedRows(newSortedRows);
+    sortTableRows(newSortedRows, setSortedRows);
+    sortTableRows(newSortedSources, setSources);
   }, [sortBy, rows]);
 
   return (
@@ -43,7 +49,7 @@ export const TableRows = ({
                   <div
                     key={`table-cell-${index}`}
                     className={`table-row__table-cell`}
-                    onClick={() => onRowClick(sourceRows[rowIndex])}
+                    onClick={() => onRowClick(sources[rowIndex])}
                   >
                     <h4>{headerLabel}</h4>
                     {index === 0 && <TableTitleCell title={row[key]} />}
@@ -56,7 +62,7 @@ export const TableRows = ({
                 );
               })}
               <div className="table-row__table-cell">
-                {actionsComponent(sourceRows[rowIndex])}
+                {actionsComponent(sources[rowIndex])}
               </div>
             </div>
           );
